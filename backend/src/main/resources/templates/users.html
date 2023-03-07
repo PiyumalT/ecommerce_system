@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>[[${pageName}]]</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Registered Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user: ${allUsers}">
+        <tr>
+            <td>[[${user.id}]]</td>
+            <td>[[${user.name}]]</td>
+            <td>[[${user.email}]]</td>
+            <td>[[${user.regDate}]]</td>
+<!--            user the names after the '.' same to the relevant model object/in this case user-->
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</body>
+</html>
