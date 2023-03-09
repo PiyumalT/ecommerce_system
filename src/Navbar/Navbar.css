@@ -1,0 +1,32 @@
+.navbar{
+    background-color: #232f3e;
+    height: 150px;
+    color: white;
+    
+}
+
+.navbar-outer{
+    width:80%;
+    margin: auto;
+    padding: 6px;
+}
+
+.navbar-outer a{
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-top: 100px;
+    margin-right: 10px;
+    border: 1px solid #232f3e;
+
+}
+
+.navbar-outer a:hover{
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.navbar-inner{
+    margin-top: 108px;
+}
