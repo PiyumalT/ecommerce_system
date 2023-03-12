@@ -1,12 +1,11 @@
 .navbar{
     background-color: #232f3e;
-    height: 150px;
+    height: 150x;
     color: white;
-    
 }
 
 .navbar-outer{
-    width:80%;
+    width:100%;
     margin: auto;
     padding: 6px;
 }
@@ -19,6 +18,9 @@
     margin-top: 100px;
     margin-right: 10px;
     border: 1px solid #232f3e;
+
+}
+.navbar-button{
 
 }
 

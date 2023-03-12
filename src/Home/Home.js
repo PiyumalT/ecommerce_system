@@ -13,6 +13,8 @@ function Home(){
              src={HomePic}
              alt="logo"/>
 
+             
+
             <div className="home-row">
                 <Product
                      id="1"

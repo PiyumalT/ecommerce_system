@@ -7,18 +7,30 @@ function Footer(){
             <div className="footer-area-top">
                 <p>Back to Top</p>
             </div>
-            <div className="footer-area--link">
+            <div className="footer-area-link">
                 <div className="footer-area-link-area">
-                    <span>test</span>
+                <span>ELITE NOVA</span>
+                        <p>Terms</p>
+                        <p>Lincence</p>
+                        <p>Market</p>
+                    
+                        
                 </div>
                 <div className="footer-area-link-area">
-                    <span></span>
+                    <span>HELP</span>
+                    
+                        <p>Terms</p>
+                        <p>Lincence</p>
+                        <p>Market</p>
+                    
                 </div>
                 <div className="footer-area-link-area">
-                    <span></span>
-                </div>
-                <div className="footer-area-link-area">
-                    <span></span>
+                    <span>OUR COMMUNITY</span>
+                
+                        <p>Terms</p>
+                        <p>Lincence</p>
+                        <p>Market</p>
+                    
                 </div>
 
             </div>
