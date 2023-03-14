@@ -69,7 +69,6 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
