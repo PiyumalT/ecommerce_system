@@ -12,12 +12,12 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
+@Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue
@@ -28,14 +28,10 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -45,6 +41,11 @@ public class User implements UserDetails {
          but we return the value we think that unique identifier
         */
         return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override
