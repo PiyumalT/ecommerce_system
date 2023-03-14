@@ -1,12 +1,10 @@
 package com.ecommercesystem.backend.config;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.jboss.logging.Logger;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +13,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
-import static org.hibernate.tool.schema.SchemaToolingLogging.LOGGER;
 
 @Service
 public class JwtService {
@@ -32,10 +28,7 @@ public class JwtService {
 
     public <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(token);
-        if (claims != null) {
-            return claimResolver.apply(claims);
-        }
-        return null;
+        return claimResolver.apply(claims);
     }
 
     public String generateToken(UserDetails userDetails) {
@@ -63,18 +56,12 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        try {
-            return Jwts
-                    .parserBuilder()
-                    .setSigningKey(getSignInKey())
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody()
-                    ;
-        } catch (ExpiredJwtException jwtException) {
-            LOGGER.log(Logger.Level.INFO, "token expired " + token);
-            return null;
-        }
+        return Jwts
+                .parserBuilder()
+                .setSigningKey(getSignInKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private Key getSignInKey() {
