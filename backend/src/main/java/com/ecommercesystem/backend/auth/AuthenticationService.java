@@ -2,6 +2,7 @@ package com.ecommercesystem.backend.auth;
 
 import com.ecommercesystem.backend.config.JwtService;
 import com.ecommercesystem.backend.token.Token;
+import com.ecommercesystem.backend.token.TokenRepository;
 import com.ecommercesystem.backend.token.TokenType;
 import com.ecommercesystem.backend.user.Role;
 import com.ecommercesystem.backend.user.User;
@@ -16,13 +17,15 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private final UserRepository repository;
+    private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
+
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request, Role role) {
-        if (repository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmail(request.getEmail())) {
             return null;
         }
         var user = User.builder()
@@ -32,7 +35,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .role(role)
                 .build();
-        var savedUser = repository.save(user);
+        var savedUser = userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         var token = Token.builder()
                 .user(savedUser)
@@ -41,6 +44,7 @@ public class AuthenticationService {
                 .expired(false)
                 .revoked(false)
                 .build();
+        tokenRepository.save(token);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
@@ -53,7 +57,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = repository.findByEmail(request.getEmail())
+        var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("email not found."));
 
         var jwtToken = jwtService.generateToken(user);
