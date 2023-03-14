@@ -4,6 +4,8 @@ import com.ecommercesystem.backend.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,17 +21,22 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
+        hierarchy.setHierarchy(Role.ADMIN + ">" + Role.USER);
+        return hierarchy;
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        String authPath = "/api/v1/auth/**";
-        String adminPath = "/api/v1/admin/**";
+        final String[] OPEN_AUTH_PATHS = {"/api/v1/auth/register", "/api/v1/auth/authenticate"};
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers(authPath).permitAll()
-                .antMatchers(adminPath)
-                .hasRole(Role.ADMIN.name()).anyRequest().permitAll()
-//                .hasAuthority(Role.ADMIN.name()).anyRequest().permitAll()
+                .antMatchers(OPEN_AUTH_PATHS)
+                .permitAll()
+                .antMatchers("/api/v1/auth/registerAdmin").hasRole(Role.ADMIN.toString())
                 .requestMatchers()
                 .permitAll()
                 .anyRequest()
