@@ -1,12 +1,14 @@
 package com.ecommercesystem.backend.config;
 
 import com.ecommercesystem.backend.token.TokenRepository;
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -35,9 +37,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         jwt = authHeader.substring(authHeaderStartWord.length());
-        userEmail = jwtService.extractUsername(jwt);
+        try {
+            userEmail = jwtService.extractUsername(jwt);
+        } catch (ExpiredJwtException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "token has expired.");
+            return;
+        }
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            final UserDetails userDetails;
+            try {
+                userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            } catch (UsernameNotFoundException e) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not found.");
+                return;
+            }
             var isTokenValid = tokenRepository.findByToken(jwt)
                     .map(t -> !t.isExpired() && !t.isRevoked())
                     .orElse(false);
