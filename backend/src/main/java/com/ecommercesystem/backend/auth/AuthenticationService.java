@@ -1,6 +1,8 @@
 package com.ecommercesystem.backend.auth;
 
 import com.ecommercesystem.backend.config.JwtService;
+import com.ecommercesystem.backend.token.Token;
+import com.ecommercesystem.backend.token.TokenType;
 import com.ecommercesystem.backend.user.Role;
 import com.ecommercesystem.backend.user.User;
 import com.ecommercesystem.backend.user.UserRepository;
@@ -30,8 +32,15 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .role(role)
                 .build();
-        repository.save(user);
+        var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var token = Token.builder()
+                .user(savedUser)
+                .token(jwtToken)
+                .tokenType(TokenType.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
