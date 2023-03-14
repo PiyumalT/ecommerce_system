@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
     private final AuthenticationService service;
 
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request, Role role) {
+    public ResponseEntity<?> register(RegisterRequest request, Role role) {
         final AuthenticationResponse token = service.register(request, role);
         if (token == null) {
             return ResponseEntity.badRequest().body("email already exists");
