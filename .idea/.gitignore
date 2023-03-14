@@ -7,4 +7,7 @@
 /dataSources/
 /dataSources.local.xml
 # Intellij Files
-../.idea
+../.idea/*
+!../.idea/.gitignore
+# .class files
+../backend/target/*
