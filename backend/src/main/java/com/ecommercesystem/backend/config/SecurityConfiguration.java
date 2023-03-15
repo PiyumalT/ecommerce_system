@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        final String[] OPEN_AUTH_PATHS = {"/api/v1/auth/register", "/api/v1/auth/authenticate"};
+        final String[] OPEN_AUTH_PATHS = {"/api/v1/auth/register", "/api/v1/auth/authenticate", "/api/v1/auth/verify"};
         http
                 .csrf()
                 .disable()
