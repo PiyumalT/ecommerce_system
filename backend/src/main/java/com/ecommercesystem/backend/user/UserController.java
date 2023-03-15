@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
@@ -18,7 +16,7 @@ public class UserController {
 
     @PreAuthorize("#id.equals(authentication.principal.id)")
     @GetMapping("/{id}")
-    public ResponseEntity<?> viewUserById(@PathVariable("id") Integer id, HttpServletRequest request) {
-        return ResponseEntity.ok(userService.getUserById(id, request));
+    public ResponseEntity<?> viewUserById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 }
