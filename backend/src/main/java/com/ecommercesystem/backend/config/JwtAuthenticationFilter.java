@@ -33,7 +33,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String userEmail;
         if (authHeader == null || !authHeader.startsWith(authHeaderStartWord)) {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized access denied.");
+//            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Not Authorized.");
+            filterChain.doFilter(request, response);
             return;
         }
         jwt = authHeader.substring(authHeaderStartWord.length());
@@ -41,6 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             userEmail = jwtService.extractUsername(jwt);
         } catch (ExpiredJwtException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Token has Expired.");
+//            filterChain.doFilter(request, response);
             return;
         }
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -49,6 +51,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             } catch (UsernameNotFoundException e) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "User Not Found");
+//                filterChain.doFilter(request, response);
                 return;
             }
             var isTokenValid = tokenRepository.findByToken(jwt)
@@ -66,10 +69,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-        try {
-            filterChain.doFilter(request, response);
-        } catch (IllegalStateException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Unknown error occurred.");
-        }
+        filterChain.doFilter(request, response);
     }
 }
