@@ -1,6 +1,7 @@
 package com.ecommercesystem.backend.token;
 
 import com.ecommercesystem.backend.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Token {
     private TokenType tokenType;
     private boolean expired;
     private boolean revoked;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
