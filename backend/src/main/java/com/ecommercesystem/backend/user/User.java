@@ -30,6 +30,9 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+    private boolean enabled;
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
@@ -71,6 +74,6 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         // TODO -  maybe want to check on this later with email account activation
-        return true;
+        return enabled;
     }
 }
