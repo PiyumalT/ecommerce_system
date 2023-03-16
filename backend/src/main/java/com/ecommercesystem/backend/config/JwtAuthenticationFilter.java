@@ -27,13 +27,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final TokenRepository tokenRepository;
 
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain) throws ServletException, IOException {
         final String authHeaderStartWord = "Bearer ";
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
         if (authHeader == null || !authHeader.startsWith(authHeaderStartWord)) {
-//            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Not Authorized.");
             filterChain.doFilter(request, response);
             return;
         }
@@ -41,8 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             userEmail = jwtService.extractUsername(jwt);
         } catch (ExpiredJwtException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Token has Expired.");
-//            filterChain.doFilter(request, response);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Token expired.");
             return;
         }
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -50,25 +49,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             } catch (UsernameNotFoundException e) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "User Not Found");
-//                filterChain.doFilter(request, response);
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not found.");
                 return;
             }
-            var isTokenValid = tokenRepository.findByToken(jwt)
-                    .map(t -> !t.isExpired() && !t.isRevoked())
-                    .orElse(false);
+            var isTokenValid = tokenRepository.findByToken(jwt).map(t -> !t.isExpired() && !t.isRevoked()).orElse(false);
             if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails,
-                        null,
-                        userDetails.getAuthorities()
-                );
-                authToken.setDetails(
-                        new WebAuthenticationDetailsSource().buildDetails(request)
-                );
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
         filterChain.doFilter(request, response);
     }
+
 }
