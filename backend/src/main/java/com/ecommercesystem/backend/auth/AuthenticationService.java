@@ -1,9 +1,7 @@
 package com.ecommercesystem.backend.auth;
 
 import com.ecommercesystem.backend.config.JwtService;
-import com.ecommercesystem.backend.token.Token;
-import com.ecommercesystem.backend.token.TokenRepository;
-import com.ecommercesystem.backend.token.TokenType;
+import com.ecommercesystem.backend.token.TokenService;
 import com.ecommercesystem.backend.user.Role;
 import com.ecommercesystem.backend.user.User;
 import com.ecommercesystem.backend.user.UserRepository;
@@ -27,23 +25,13 @@ import java.io.UnsupportedEncodingException;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final UserRepository userRepository;
-    private final TokenRepository tokenRepository;
+    private final TokenService tokenService;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final JavaMailSender mailSender;
     private final Environment env;
 
-    private void saveUserToken(User user, String jwtToken) {
-        var token = Token.builder()
-                .user(user)
-                .token(jwtToken)
-                .tokenType(TokenType.BEARER)
-                .expired(false)
-                .revoked(false)
-                .build();
-        tokenRepository.save(token);
-    }
 
     private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
         String toSendAddress = user.getEmail();
@@ -113,22 +101,10 @@ public class AuthenticationService {
             throw new AuthenticationServiceException("Account not verified");
         }
         var jwtToken = jwtService.generateToken(user);
-        revokeUserTokens(user);
-        saveUserToken(user, jwtToken);
+        tokenService.revokeUserTokens(user);
+        tokenService.saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
-    }
-
-    protected void revokeUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokensByUser(user.getId());
-        if (validUserTokens.isEmpty()) {
-            return;
-        }
-        validUserTokens.forEach(t -> {
-            t.setExpired(true);
-            t.setRevoked(true);
-        });
-        tokenRepository.saveAll(validUserTokens);
     }
 }
