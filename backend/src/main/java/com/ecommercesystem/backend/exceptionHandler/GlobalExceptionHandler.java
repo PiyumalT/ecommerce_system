@@ -23,4 +23,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleExpiredJwtException() {
         return ResponseEntity.badRequest().body(JWT_EXPIRE_MESSAGE);
     }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<?> handleIllegalArgumentException() {
+        return ResponseEntity.badRequest().body("Passwords do not match.");
+    }
 }
