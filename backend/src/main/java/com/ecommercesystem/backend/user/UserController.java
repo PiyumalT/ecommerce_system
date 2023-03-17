@@ -3,10 +3,7 @@ package com.ecommercesystem.backend.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -18,5 +15,16 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> viewUserById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(userService.getUserById(id));
+    }
+
+    @GetMapping("/saveTestUser")
+    public String saveTestUser() {
+        return userService.saveUserForTest();
+    }
+
+    @PreAuthorize("#id.equals(authentication.principal.id)")
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUserById(@PathVariable("id") Integer id, @RequestBody UserDTO editedUser) {
+        return ResponseEntity.ok(userService.updateUserById(id, editedUser));
     }
 }
