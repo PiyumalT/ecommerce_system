@@ -34,9 +34,9 @@ public class UserService {
     }
 
     public final String updateUser(User user, UserDTO editedUser) {
-        user.setFirstname(editedUser.firstname());
-        user.setLastname(editedUser.lastname());
-        userRepository.updateUser(editedUser.firstname(), editedUser.lastname(), user.getId());
+        user.setFirstname(editedUser.getFirstname());
+        user.setLastname(editedUser.getLastname());
+        userRepository.updateUser(editedUser.getFirstname(), editedUser.getLastname(), user.getId());
         return "updated " + user.getFirstname() + " " + user.getLastname();
     }
 
