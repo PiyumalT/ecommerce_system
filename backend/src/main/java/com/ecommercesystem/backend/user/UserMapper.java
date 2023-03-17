@@ -1,12 +1,20 @@
 package com.ecommercesystem.backend.user;
 
-import org.mapstruct.BeanMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.springframework.stereotype.Service;
 
-@Mapper(componentModel = "spring")
-public interface UserMapper {
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateUserFromDto(UserDto userDto, @MappingTarget User user);
+import java.util.function.Function;
+
+@Service
+public class UserMapper implements Function<User, UserDTO> {
+
+
+    @Override
+    public UserDTO apply(User user) {
+        return new UserDTO(
+                user.getId(),
+                user.getFirstname(),
+                user.getLastname(),
+                user.getEmail()
+        );
+    }
 }
