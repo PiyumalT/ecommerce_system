@@ -34,14 +34,16 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        final String[] OPEN_AUTH_PATHS = {"/api/v1/auth/register", "/api/v1/auth/authenticate", "/api/v1/auth/verify"};
+        final String[] OPEN_PATHS = {"/api/v1/auth/register", "/api/v1/auth/authenticate", "/api/v1/auth/verify", "/api/v1/user/saveTestUser"};
+        final String[] ADMIN_ONLY_ACCESS_PATHS = {"/api/v1/auth/registerAdmin"};
+        final String logoutPath = "/api/v1/auth/logout";
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers(OPEN_AUTH_PATHS)
+                .antMatchers(OPEN_PATHS)
                 .permitAll()
-                .antMatchers("/api/v1/auth/registerAdmin").hasRole(Role.ADMIN.toString())
+                .antMatchers(ADMIN_ONLY_ACCESS_PATHS).hasRole(Role.ADMIN.toString())
                 .requestMatchers()
                 .permitAll()
                 .anyRequest()
@@ -53,7 +55,7 @@ public class SecurityConfiguration {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .logout()
-                .logoutUrl("/api/v1/auth/logout")
+                .logoutUrl(logoutPath)
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler(
                         (request, response, authentication) ->
