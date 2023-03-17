@@ -1,6 +1,7 @@
 package com.ecommercesystem.backend.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -12,4 +13,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     boolean existsByEmail(String email);
 
     Optional<User> findUserByVerificationCode(String verificationCode);
+
+    @Query("""
+            update User u
+            set u.firstname = ?1, u.lastname = ?2
+            where u.id = ?3
+            """)
+    void updateUser(String firstname, String lastname, Integer userId);
 }
