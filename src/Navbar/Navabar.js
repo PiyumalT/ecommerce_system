@@ -15,7 +15,7 @@ function Navbar(){
                 
                      <Link>Home</Link>
                      <Link>Customer Service</Link>
-                     <Link>conact Us</Link>
+                     <Link>Conact Us</Link>
                      <Link>Product</Link>
                 </div>
                 

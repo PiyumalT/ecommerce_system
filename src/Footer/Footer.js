@@ -5,7 +5,14 @@ function Footer(){
     return(
         <div className="footer-area">
             <div className="footer-area-top">
-                <p>Back to Top</p>
+                <p>Sign Up for Newsletter</p>
+                <input type="text" 
+                placeholder="Your Email Address"
+               
+                />
+                <button  className="footer-area-top-button">Subscribe</button>
+               
+                
             </div>
             <div className="footer-area-link">
                 <div className="footer-area-link-area">
@@ -32,9 +39,12 @@ function Footer(){
                         <p>Market</p>
                     
                 </div>
-
+            </div>
+            <div className="footer-end">
+                &copy; {new Date().getFullYear()}: Powered by Elite nova  
             </div>
         </div>
+
     )
 }
 

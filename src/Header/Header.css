@@ -44,20 +44,20 @@
 }
 
 .header-search-input{
-    height: 12px;
+    height: 30px;
     padding: 10px;
     border: none;
     width: 100%;
 }
 
 .header-search-icon{
-    padding: 5px;
-    height: 22px !important;
+    width: 20px;
+    height: 30px !important;
     background-color: #cd904d;
 }
 
 .header-search-icon:hover{
-    box-shadow: inset 5px 4px 10px rgba(0,0,0,.3),
+    box-shadow: inset 5px 4px 5px rgba(0,0,0,.3),
                 inset -4px -4px 10px white;
     transition: .2s;
 }

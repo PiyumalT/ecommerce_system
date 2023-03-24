@@ -30,7 +30,7 @@ function Header() {
       
         <div className='header-search'>
         
-            <input type="text" className='header-search-input'/>
+            <input type="text" placeholder="Search here" className='header-search-input'/>
             <FaSearch className="header-search-icon"/>
         </div>
 

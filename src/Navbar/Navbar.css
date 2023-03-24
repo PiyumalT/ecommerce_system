@@ -1,6 +1,6 @@
 .navbar{
     background-color: #232f3e;
-    height: 150x;
+    height: 150px;
     color: white;
 }
 
@@ -15,7 +15,7 @@
     text-decoration: none;
     cursor: pointer;
     padding: 4px;
-    margin-top: 100px;
+    margin-top: 90px;
     margin-right: 10px;
     border: 1px solid #232f3e;
 
@@ -30,5 +30,5 @@
 }
 
 .navbar-inner{
-    margin-top: 108px;
+    margin-top: 90px;
 }
