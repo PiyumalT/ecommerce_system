@@ -1,0 +1,35 @@
+.productcart{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.productcart-image{
+    object-fit: contain;
+    width: 160px;
+    height: 160px;
+    border: 1px solid #ccc;
+}
+
+.productcart-title{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.productcart-info{
+    padding-left: 20px;
+}
+
+.productcart-info > button{
+    background-color: #f0c14b;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+}
+
+.productcart-info >button:hover{
+    box-shadow: inset 5px 4px 10px rgba(0,0,0,.3),
+                inset -4px -4px 10px white;
+    transition: .2s;
+}
