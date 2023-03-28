@@ -1,0 +1,191 @@
+.main {
+    width: 100%;
+    height: 150px;
+}
+
+.navbar {
+    width: 100vw;
+    background: linear-gradient(to top, rgb(2, 35, 66) 50%, rgb(2, 35, 66) 50%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-x: clip;
+}
+
+
+.logo {
+    object-fit: cover;
+}
+
+.navbar > * {
+    flex: 0 1 33%;
+    float: none !important;
+}
+
+.search {
+    text-align: center;
+    border-radius: 4px;
+}
+
+.search form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#search-bar {
+    border: none;
+    text-align: center;
+    flex: 0 0 80%;
+}
+
+.search button.btn {
+    background: #3e5986;
+    padding: 5px 5px;
+    /*width: 30px;*/
+    /*height: 30px;*/
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    margin-left: 10px;
+    border-radius: 12px;
+}
+
+.search button.btn i {
+    font-size: 1.25rem;
+}
+
+.menu {
+    width: 100px;
+    float: left;
+    height: 70px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li {
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 16px;
+    color: brown;
+    cursor: pointer;
+
+}
+
+.navbar2 {
+    width: 100%;
+    height: 50%;
+    margin: auto;
+    background: linear-gradient(to top, rgb(2, 35, 66) 50%, rgb(2, 35, 66) 50%);
+}
+
+.navbar2 ul {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+li {
+    float: left;
+    box-sizing: unset;
+}
+
+.navbar2 ul li {
+    display: block;
+    color: rgb(58, 161, 119);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar2 li div:hover:not(.active) {
+    background-color: #111;
+}
+
+#search-bar {
+    font-size: large;
+    background-color: #3e5986;
+}
+
+#img {
+    height: 70px;
+    width: 28vw;
+}
+
+.car {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+}
+
+.Motor {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+    float: left;
+}
+
+.other {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+    float: left;
+}
+
+.tools {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+    float: left;
+}
+
+.tyres {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+    float: left;
+}
+
+.access {
+    width: 120px;
+    padding: 20px;
+    border: #111;
+    margin: 0;
+    background-color: rgb(34, 15, 102);
+    text-align: center;
+    float: left;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+
+}
+
+form.search-form {
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
