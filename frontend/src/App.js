@@ -7,9 +7,12 @@ import Checkout from './components/Checkout/Checkout';
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navabar'
 
+
+
 //import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
+import About from './pages/About/About';
 
 function App() {
 
@@ -19,9 +22,12 @@ function App() {
           <Routes>
             <Route path="/checkout" element={<><Header/><Checkout/></>}/>
             {/*<Route path="/login" element={<Login/>}/>*/}
-            <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
+            <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
+            <Route path="/About" element={<><About/></>}/> 
           </Routes>
           
+          
+            
           
 
           
