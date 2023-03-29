@@ -4,10 +4,6 @@ import {FaSearch} from 'react-icons/fa';
 import {FaShoppingBasket} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import {useStateValue} from '../StateProvider';
-//import {auth} from '../firebase'
-import iconpic from '../Picture/icon.png'
-import logopic from '../Picture/logo.png'
-
 
 function Header() {
 
@@ -22,11 +18,11 @@ function Header() {
 
   return (
     <div>
-      <div className='header-logo-div'><img className='header-logo' src={logopic} alt="logo"/></div> 
+      <div className='header-logo-div'><img className='header-logo' src="./Picture/logo.png" alt="logo"/></div> 
     <nav className="header">
       
     
-      <img className='header-icon' src={iconpic} alt="icon"/>
+      <img className='header-icon' src="./Picture/icon.png" alt="icon"/>
       
         <div className='header-search'>
         
