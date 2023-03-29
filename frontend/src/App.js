@@ -14,6 +14,7 @@ import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import About from './pages/About/About';
 import FAQ from './pages/FAQ/FAQ';
+import Contact_Us from './pages/Contact_Us/Contact_Us';
 
 
 
@@ -27,7 +28,8 @@ function App() {
             {/*<Route path="/login" element={<Login/>}/>*/}
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route path="/About" element={<><About/></>}/>
-            <Route path="/FAQ" element={<><FAQ/></>}/> 
+            <Route path="/FAQ" element={<><FAQ/></>}/>
+            <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
           </Routes>
           
           

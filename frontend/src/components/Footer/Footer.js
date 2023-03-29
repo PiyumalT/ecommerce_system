@@ -17,10 +17,10 @@ function Footer(){
             </div>
             <div className="footer-area-link">
                 <div className="footer-area-link-area">
-                <span>Contact Us</span>
-                        <p>FB</p>
-                        <p>YT</p>
-                        <p>Email</p>
+                <span><Link className="link" to="/Contact_Us" >Contact Us</Link></span>
+                        <p><Link className="link" to="/Contact_Us" >FB</Link></p>
+                        <p><Link className="link" to="/Contact_Us" >YT</Link></p>
+                        <p><Link className="link" to="/Contact_Us" >Email</Link></p>
                     
                         
                 </div>
