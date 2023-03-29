@@ -13,6 +13,9 @@ import Navbar from './components/Navbar/Navabar'
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import About from './pages/About/About';
+import FAQ from './pages/FAQ/FAQ';
+
+
 
 function App() {
 
@@ -23,7 +26,8 @@ function App() {
             <Route path="/checkout" element={<><Header/><Checkout/></>}/>
             {/*<Route path="/login" element={<Login/>}/>*/}
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
-            <Route path="/About" element={<><About/></>}/> 
+            <Route path="/About" element={<><About/></>}/>
+            <Route path="/FAQ" element={<><FAQ/></>}/> 
           </Routes>
           
           
