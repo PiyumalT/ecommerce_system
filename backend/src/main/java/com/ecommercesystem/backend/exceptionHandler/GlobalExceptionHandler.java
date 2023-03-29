@@ -18,13 +18,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<?> handleExpiredJwtException() {
         return ResponseEntity.badRequest().body(JWT_EXPIRE_MESSAGE);
     }
 
-    @ExceptionHandler(ExpiredJwtException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleIllegalArgumentException() {
         return ResponseEntity.badRequest().body("Passwords do not match.");
     }
