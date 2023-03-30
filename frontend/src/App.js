@@ -14,6 +14,7 @@ import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import About from './pages/About/About';
 import FAQ from './pages/FAQ/FAQ';
+import ProductInfo from './pages/ProductInfo/ProductInfo';
 import Contact_Us from './pages/Contact_Us/Contact_Us';
 
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
+            <Route path="/ProductInfo" element={<><ProductInfo/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
           </Routes>
           
