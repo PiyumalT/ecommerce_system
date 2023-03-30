@@ -10,10 +10,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 @Configuration
@@ -41,26 +38,27 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .antMatchers(OPEN_PATHS)
-                .permitAll()
-                .antMatchers(ADMIN_ONLY_ACCESS_PATHS).hasRole(Role.ADMIN.toString())
-                .requestMatchers()
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout()
-                .logoutUrl(logoutPath)
-                .addLogoutHandler(logoutHandler)
-                .logoutSuccessHandler(
-                        (request, response, authentication) ->
-                                SecurityContextHolder.clearContext()
-                );
+                .anyRequest().permitAll();
+//                .antMatchers(OPEN_PATHS)
+//                .permitAll()
+//                .antMatchers(ADMIN_ONLY_ACCESS_PATHS).hasRole(Role.ADMIN.toString())
+//                .requestMatchers()
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                .authenticationProvider(authenticationProvider)
+//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+//                .logout()
+//                .logoutUrl(logoutPath)
+//                .addLogoutHandler(logoutHandler)
+//                .logoutSuccessHandler(
+//                        (request, response, authentication) ->
+//                                SecurityContextHolder.clearContext()
+//                );
         return http.build();
     }
 }
