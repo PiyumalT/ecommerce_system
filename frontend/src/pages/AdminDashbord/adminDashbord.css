@@ -28,10 +28,10 @@
 
 .total{
     height: 65%;
-    width: 70%;
+    
     background-color: rgba(13, 13, 13, 0.93);
     padding:4vw;
-    margin: 2vw 1vw 1vw 3vw;
+    margin: 2vw 2vw 2vw 2vw;
     text-align: center;
     color: rgb(249, 251, 253);
     border-radius: 30%;
