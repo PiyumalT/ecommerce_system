@@ -1,0 +1,48 @@
+.header-logo-div{
+    display: flex;
+    height: 60px;
+}
+
+.btn{
+    padding: 5 5 5 5;
+    color: rgb(242, 241, 247);
+    background-color: rgb(9, 15, 83);
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.btn:hover {
+    background-color: #f9fcf9; /* Green */
+    color: rgb(38, 15, 171);
+  }
+
+.components{
+    display: flex;
+    width: 100%;
+    background-color: #131921;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+}
+
+.btn1{
+    padding: 15 15 15 15;
+    color: rgb(242, 241, 247);
+    background-color: rgb(9, 15, 83);
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    margin-top: 75px;
+    margin-bottom: 20px;
+    flex: 1;
+    margin-right: 50px;
+    margin-left: 50px;
+       
+}
+
+.btn1:hover {
+    background-color: #f9fcf9; /* Green */
+    color: rgb(38, 15, 171);
+  }

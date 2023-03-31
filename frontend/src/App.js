@@ -9,12 +9,17 @@ import Navbar from './components/Navbar/Navabar'
 
 
 
+
 //import{auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import About from './pages/About/About';
 import FAQ from './pages/FAQ/FAQ';
 import Contact_Us from './pages/Contact_Us/Contact_Us';
+
+import AdminNavBar from './components/AdminNavBar/AdminNavBar';
+import AdminDashbord from './pages/AdminDashbord/AdminDashbord'
+
 
 
 
@@ -30,6 +35,7 @@ function App() {
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
+            <Route path="/AdminDashbord" element={<><AdminNavBar/><AdminDashbord/></>}/>
           </Routes>
           
           
