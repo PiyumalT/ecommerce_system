@@ -35,7 +35,7 @@ function App() {
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
-            <Route path="/AdminDashbord" element={<><AdminNavBar/><AdminDashbord/></>}/>
+            <Route path="/AdminDashbord" element={<><AdminNavBar/><AdminDashbord/><Footer/></>}/>
           </Routes>
           
           
