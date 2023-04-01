@@ -1,0 +1,65 @@
+
+.first, .second, .third {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .first {
+    height: 50px;
+  }
+  
+  .second {
+    height: 50px;
+    background-color: white;
+  }
+  
+  .third {
+    width: 30%;
+  }
+  
+  .btn2 {
+    background-color: #160d52;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 45%;
+  }
+  
+  .btn2:hover {
+    background-color: #ccccdb;
+    color: rgb(11, 11, 156);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 10px;
+    color: #1b0b86;
+  }
+
+  h2{
+    text-align: right;
+    color: #1b0b86;
+  }
+
+  .box{
+    background-color:  rgba(240, 241, 242, 0.906);
+    width: 250px;
+  }
+  
+ 
+ 
