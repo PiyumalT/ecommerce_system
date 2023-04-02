@@ -46,16 +46,43 @@ const ProductDetails = () => {
     }
   }
 
-  useEffect(()=>{
-    fetch("http://localhost:8080/api/v1/items/19")
-    .then(res=>res.json())
-    .then((result)=>{
-      setItem(result);
-      setItemopt(result.options);
-      //setItem(result);
+  function getProductId(url) {
+    const urlParts = url.split('/');
+    const productInfoIndex = urlParts.indexOf('ProductInfo');
+    
+    if (productInfoIndex !== -1) {
+      const nextIndex = productInfoIndex + 1;
+      if (nextIndex < urlParts.length) {
+        return(urlParts[nextIndex]);
+      } else {
+        return("0");
+      }
+    } else {
+      return("0");
     }
-  )
-  },[])
+  }
+
+  const product_url = "http://localhost:8080/api/v1/items/"+(getProductId(window.location.href));
+  useEffect(() => {
+    fetch(product_url)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .then(result => {
+        setItem(result);
+        setItemopt(result.options);
+      })
+      .catch(error => {
+        //console.error("Fetch Error:", error);
+        //add error page here.
+        window.location.href = "../error";
+      });
+  }, []);
+  
 
     //give backend options to here
 
@@ -74,6 +101,7 @@ const ProductDetails = () => {
         </div>
         <div className="product-details">
           <h1 className="product-name">{item.name}</h1>
+          <h3>{product_url}</h3>
           <p className="product-description">{item.description}</p>
           <p className="product-price">Rs.{item.price}</p>
           <select className="product-options">
