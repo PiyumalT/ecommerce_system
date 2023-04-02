@@ -17,6 +17,7 @@ import FAQ from './pages/FAQ/FAQ';
 import Contact_Us from './pages/Contact_Us/Contact_Us';
 import ProductInfo from './pages/ProductInfo/ProductInfo';
 import PlaceOrder from './pages/Checkout/Checkout';
+import OrderController from './components/controller/OrderController';
 
 
 function App() {
@@ -31,9 +32,12 @@ function App() {
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
+
+            <Route path="/ProductInfo/:itemID" element={<><ProductInfo/></>}/>
             
-            <Route path="/ProductInfo" element={<><ProductInfo/></>}/>
             <Route path="/PlaceOrder" element={<><PlaceOrder/></>}/>
+            <Route path="/Orderc" element={<><OrderController/></>}/>
+
 
           </Routes>
           
