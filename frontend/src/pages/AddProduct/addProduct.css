@@ -1,8 +1,12 @@
+.middle1{
+  height: 42vw;
+  
+}
 
-.first, .second, .third {
+.first, .second1, .third {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 20px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -12,9 +16,11 @@
     height: 50px;
   }
   
-  .second {
+  .second1{
     height: 50px;
+    width: 1000px;
     background-color: white;
+    
   }
   
   .third {
@@ -45,18 +51,22 @@
     padding: 10px;
   }
 
-  h1 {
+  .middle1 h1 {
     text-align: center;
     margin-top: 10px;
     color: #1b0b86;
   }
 
-  h2{
+  .input4{
     text-align: right;
+    width: 400px;
+  }
+
+  .input4 h2{
     color: #1b0b86;
   }
 
-  .box{
+  .box3{
     background-color:  rgba(240, 241, 242, 0.906);
     width: 250px;
   }
