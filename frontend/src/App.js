@@ -20,6 +20,7 @@ import Contact_Us from './pages/Contact_Us/Contact_Us';
 import AdminNavBar from './components/AdminNavBar/AdminNavBar';
 import AdminDashbord from './pages/AdminDashbord/AdminDashbord';
 import AddProduct from './pages/AddProduct/AddProduct';
+import ProductList from './pages/ProductList/ProductList';
 
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
             <Route path="/AdminDashbord" element={<><AdminNavBar/><AdminDashbord/><Footer/></>}/>
             <Route path="/AddProduct" element={<><AdminNavBar/><AddProduct/><Footer/></>}/>
+            <Route path="/ProductList" element={<><AdminNavBar/><ProductList/><Footer/></>}/>
           </Routes>
           
           
