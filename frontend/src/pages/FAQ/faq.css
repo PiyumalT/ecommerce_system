@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.box {
+    padding: 20px;
+    text-align: center;
+    width: 62%;
+    background-color:black; 
+    color:#b4c1d5;
+}
+.question {
+    cursor: pointer;
+    text-align: left;
+}
+.answer {
+    
+    text-align: left;
+}
