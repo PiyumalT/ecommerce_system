@@ -14,8 +14,11 @@ import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import About from './pages/About/About';
 import FAQ from './pages/FAQ/FAQ';
-import ProductInfo from './pages/ProductInfo/ProductInfo';
 import Contact_Us from './pages/Contact_Us/Contact_Us';
+import ProductInfo from './pages/ProductInfo/ProductInfo';
+import PlaceOrder from './pages/Checkout/Checkout';
+import OrderController from './components/controller/OrderController';
+import Cart1 from './components/controller/Cart1';
 
 
 
@@ -30,8 +33,17 @@ function App() {
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
-            <Route path="/ProductInfo" element={<><ProductInfo/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
+
+            <Route path="/ProductInfo/:itemID" element={<><ProductInfo/></>}/>
+            
+            <Route path="/PlaceOrder" element={<><PlaceOrder/></>}/>
+            <Route path="/Orderc" element={<><OrderController/></>}/>
+            <Route path="/cart1" element={<><Cart1/></>}/>
+
+
+
+
           </Routes>
           
           
