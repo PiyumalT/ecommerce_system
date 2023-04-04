@@ -4,7 +4,7 @@ import com.ecommercesystem.backend.config.JwtService;
 import com.ecommercesystem.backend.model.Role;
 import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.repository.UserRepository;
-import com.ecommercesystem.backend.token.TokenService;
+import com.ecommercesystem.backend.service.TokenService;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.core.env.Environment;

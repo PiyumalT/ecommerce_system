@@ -6,7 +6,6 @@ import com.ecommercesystem.backend.mapper.UserMapper;
 import com.ecommercesystem.backend.model.Role;
 import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.repository.UserRepository;
-import com.ecommercesystem.backend.token.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
