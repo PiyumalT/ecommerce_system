@@ -1,4 +1,4 @@
-package com.ecommercesystem.backend.user;
+package com.ecommercesystem.backend.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

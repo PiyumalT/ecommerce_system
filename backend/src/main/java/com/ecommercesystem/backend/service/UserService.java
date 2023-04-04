@@ -1,10 +1,10 @@
 package com.ecommercesystem.backend.service;
 
 import com.ecommercesystem.backend.config.JwtService;
+import com.ecommercesystem.backend.dto.UserDTO;
 import com.ecommercesystem.backend.model.Role;
 import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.token.TokenService;
-import com.ecommercesystem.backend.user.UserDTO;
 import com.ecommercesystem.backend.user.UserMapper;
 import com.ecommercesystem.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.ecommercesystem.backend.controller;
 
+import com.ecommercesystem.backend.dto.UserDTO;
 import com.ecommercesystem.backend.service.UserService;
-import com.ecommercesystem.backend.user.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
