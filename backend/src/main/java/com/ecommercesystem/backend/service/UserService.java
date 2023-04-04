@@ -65,7 +65,7 @@ public class UserService {
     public final String removeUserFromDB(User user) {
         userRepository.delete(user);
         tokenService.revokeUserTokens(user);
-        return "deactivated " + user.getFirstname() + " " + user.getLastname();
+        return "removed " + user.getFirstname() + " " + user.getLastname();
     }
 
     public final String removeUserFromDBById(Integer id) {
