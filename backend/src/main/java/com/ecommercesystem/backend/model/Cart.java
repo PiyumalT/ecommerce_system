@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -15,4 +17,11 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Table(name = "cart")
 public class Cart {
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private long item_id;
+    private int user_id;
+    private int quantity;
+    private boolean shipped;
 }
