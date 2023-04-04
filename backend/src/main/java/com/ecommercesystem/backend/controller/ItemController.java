@@ -55,7 +55,7 @@ public class ItemController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteItem(@PathVariable("id") long id) {
         Item item = itemRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("No item found to the given item id: " + id)
         );
