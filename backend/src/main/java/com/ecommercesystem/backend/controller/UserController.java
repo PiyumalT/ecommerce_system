@@ -1,66 +1,32 @@
 package com.ecommercesystem.backend.controller;
 
-import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
-import com.ecommercesystem.backend.model.User;
-import com.ecommercesystem.backend.repository.UserRepository;
+import com.ecommercesystem.backend.user.UserDTO;
+import com.ecommercesystem.backend.user.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @RestController
-//@CrossOrigin //remove in production - bypass CORS policy error
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
+    private final UserService userService;
 
-    private final UserRepository userRepository;
-
-    @GetMapping("")
-    public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userRepository.findAll());
-    }
-
-    @PostMapping("/newUser")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        user.setRole("USER");
-        user.setRegDate(LocalDateTime.now().toString());
-        System.out.println(user);
-        return ResponseEntity.ok(userRepository.save(user));
-    }
-
+    @PreAuthorize("#id.equals(authentication.principal.id)")
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No user found to the given user id: " + id)
-        );
-        return ResponseEntity.ok(user);
+    public ResponseEntity<?> viewUserById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 
+    @GetMapping("/saveTestUser")
+    public String saveTestUser() {
+        return userService.saveUserForTest();
+    }
+
+    @PreAuthorize("#id.equals(authentication.principal.id)")
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User editedUser) {
-        User userToUpdate = userRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No user found to the given user id: " + id)
-        );
-
-        userToUpdate.setName(editedUser.getName());
-//        userToUpdate.setRegDate(editedUser.getRegDate());
-        userToUpdate.setEmail(editedUser.getEmail());
-
-        userRepository.save(userToUpdate);
-
-        return ResponseEntity.ok(userToUpdate);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
-        User user = userRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No employee found to the given user id: " + id)
-        );
-        userRepository.delete(user);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<?> updateUserById(@PathVariable("id") Integer id, @RequestBody UserDTO editedUser) {
+        return ResponseEntity.ok(userService.updateUserById(id, editedUser));
     }
 }
