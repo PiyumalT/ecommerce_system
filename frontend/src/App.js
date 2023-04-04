@@ -18,6 +18,8 @@ import Contact_Us from './pages/Contact_Us/Contact_Us';
 import ProductInfo from './pages/ProductInfo/ProductInfo';
 import PlaceOrder from './pages/Checkout/Checkout';
 import OrderController from './components/controller/OrderController';
+import Cart1 from './components/controller/Cart1';
+
 
 
 function App() {
@@ -37,6 +39,9 @@ function App() {
             
             <Route path="/PlaceOrder" element={<><PlaceOrder/></>}/>
             <Route path="/Orderc" element={<><OrderController/></>}/>
+            <Route path="/cart1" element={<><Cart1/></>}/>
+
+
 
 
           </Routes>
