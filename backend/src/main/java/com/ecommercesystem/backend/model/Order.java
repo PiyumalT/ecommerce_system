@@ -19,20 +19,12 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(name = "cus_id")
     private int customer_id;
-    @Column(name = "address_id")
     private int address_id;
-    @Column(name = "price")
     private float price;
-
-    @Column(name = "date")
     private LocalDateTime date;
-
-    @Column(name = "paid")
-    private int paid_amount;
-
-    @Column(name = "shipped")
-    private int shipped;
+    private float paid_amount;
+    private boolean shipped;
+    private int quantity;
+    private int item_id;
 }
