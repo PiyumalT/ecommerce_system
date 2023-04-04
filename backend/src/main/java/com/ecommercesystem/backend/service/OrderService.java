@@ -41,10 +41,10 @@ public class OrderService {
     }
 
     public List<Order> getAllOrdersOfAUser(long userId) {
-        return orderRepository.findAllByUserId(userId);
+        return orderRepository.findAllOrdersMadeByUserUsingUserId(userId);
     }
 
     public List<Order> getAllOrdersOfAItem(long itemId) {
-        return orderRepository.findAllByItemId(itemId);
+        return orderRepository.findAllOrdersMadeToAItemByItemId(itemId);
     }
 }
