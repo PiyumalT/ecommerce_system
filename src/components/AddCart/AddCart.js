@@ -1,21 +1,21 @@
 import React from "react";
-import './Checkout.css'
+import './AddCart.css'
 import Subtotal from '../Subtotal/Subtotal';
-import {useStateValue} from '../StateProvider';
-import ProductCart from '../ProductCart/ProductCart';
+import {useStateValue} from '../../StateProvider';
+import ProductCart from '../../pages/ProductCart/ProductCart';
 
-function Checkout(){
+function AddCart(){
 
     const[{basket}] = useStateValue();
     
     return(
-        <div className="checkout">
+        <div className="addcart">
             
-            <div className="checkout-left">
+            <div className="addcart-left">
                 {
                     basket.length === 0 ? (
                         <div>
-                            <h2 className="checkout-title">Your shopping basket is empty </h2>
+                            <h2 className="addcart-title">Your shopping basket is empty </h2>
                             <p>You have no items in your basket. Buy one</p>
                         </div>
                     ):(
@@ -39,7 +39,7 @@ function Checkout(){
             </div>
             {
                 basket.length > 0 && (
-                    <div className="checkout-right">
+                    <div className="addcart-right">
                         <Subtotal/>
                     </div>
                 )
@@ -50,4 +50,4 @@ function Checkout(){
     )
 }
 
-export default Checkout;
+export default AddCart;

@@ -1,6 +1,6 @@
 import React from "react";
 import './ProductCart.css';
-import {useStateValue} from '../StateProvider'
+import {useStateValue} from '../../StateProvider'
 
 function ProductCart({id,title,image,price,rating}){
 
@@ -30,7 +30,9 @@ function ProductCart({id,title,image,price,rating}){
                 }
             </div>
             <div className="additem">
-                
+                {/* <button type="button"  onClick={handleDecrement} className="input-text">-</button>
+                <div className="form-control">{quantity}</div>
+                <button type="button" onClick={handleIncrement}className="input-text">+</button> */}
             </div>
             <button onClick={removeItem}>Remove from the Cart</button>
             </div>

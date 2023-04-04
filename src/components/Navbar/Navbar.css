@@ -1,6 +1,6 @@
 .navbar{
     background-color: #232f3e;
-    height: 150px;
+    height: 100px;
     color: white;
 }
 
@@ -8,6 +8,8 @@
     width:100%;
     margin: auto;
     padding: 6px;
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .navbar-outer a{
@@ -17,10 +19,7 @@
     padding: 4px;
     margin-top: 90px;
     margin-right: 10px;
-    border: 1px solid #232f3e;
-
-}
-.navbar-button{
+    background-color: blue;
 
 }
 
@@ -30,5 +29,6 @@
 }
 
 .navbar-inner{
-    margin-top: 90px;
+    margin-top: 40px;
+    width: 600px;
 }

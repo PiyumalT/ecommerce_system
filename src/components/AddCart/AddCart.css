@@ -1,4 +1,4 @@
-.checkout{
+.addcart{
     display: flex;
     padding: 80px;
     padding-top: 110px;
@@ -8,7 +8,7 @@
     width:100%;
 }
 
-.checkout-title{
+.addcart-title{
     margin-right: 10px;
     padding: 10px;
     border-bottom: 1px solid lightgray;

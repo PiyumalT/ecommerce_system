@@ -1,12 +1,10 @@
 import './App.css';
-import Header from './Header/Header';
+import Header from './components/Header/Header';
 import { Routes, Route } from 'react-router-dom';
-//import Login from './Login/Login';
-import Home from './Home/Home';
-import Checkout from './Checkout/Checkout';
-import Footer from './Footer/Footer'
-import Navbar from './Navbar/Navabar'
-//import{auth} from './firebase';
+import Home from './pages/Home/Home';
+import AddCart from './components/AddCart/AddCart';
+import Footer from './components/Footer/Footer';
+import Navbar from './components/Navbar/Navbar';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 
@@ -17,8 +15,7 @@ function App() {
     
         <div className="App">
           <Routes>
-            <Route path="/checkout" element={<><Header/><Checkout/></>}/>
-            {/*<Route path="/login" element={<Login/>}/>*/}
+            <Route path="/addcart" element={<><Header/><AddCart/></>}/>
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/> 
           </Routes>
         </div>

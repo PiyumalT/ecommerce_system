@@ -12,11 +12,13 @@ function Navbar(){
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
                      <span class="navbar-toggler-icon"></span>
                 </button>
-                
-                     <Link>Home</Link>
-                     <Link>Customer Service</Link>
-                     <Link>Conact Us</Link>
-                     <Link>Product</Link>
+
+                     <Link>Car Part</Link>
+                     <Link>Motorcycle Part</Link>
+                     <Link>Other Part</Link>
+                     <Link>Tools</Link>
+                     <Link>Tyres</Link>
+                     <Link>Accessories</Link>
                 </div>
                 
             </div>

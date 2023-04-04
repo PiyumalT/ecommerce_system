@@ -3,7 +3,7 @@ import './Header.css';
 import {FaSearch} from 'react-icons/fa';
 import {FaShoppingBasket} from 'react-icons/fa';
 import {Link} from 'react-router-dom';
-import {useStateValue} from '../StateProvider';
+import {useStateValue} from '../../StateProvider';
 
 function Header() {
 
@@ -17,12 +17,8 @@ function Header() {
   }
 
   return (
-    <div>
-      <div className='header-logo-div'><img className='header-logo' src="./Picture/logo.png" alt="logo"/></div> 
-    <nav className="header">
-      
-    
-      <img className='header-icon' src="./Picture/icon.png" alt="icon"/>
+    <div className="header">
+      <img className='header-logo' src="./Picture/logo.png" alt="icon"/>
       
         <div className='header-search'>
         
@@ -53,13 +49,12 @@ function Header() {
         </div>   
 
         {/*Basket Icon*/}
-        <Link to="/checkout" className='header-link'>
+        <Link to="/addcart" className='header-link'>
             <div className='header-option-basket'>
                 <FaShoppingBasket/>
                 <span className='header-option-line2 header-product-count'>{basket?.length}</span>
             </div>
         </Link> 
-    </nav>
     </div>
   );
 }

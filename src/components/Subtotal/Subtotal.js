@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateValue } from "../StateProvider";
+import { useStateValue } from "../../StateProvider";
 import CurrencyFormat from 'react-currency-format';
 import './Subtotal.css';
 

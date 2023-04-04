@@ -1,7 +1,7 @@
 import React from "react";
 import './Product.css';
-import '../Home/Home.css';
-import {useStateValue} from '../StateProvider';
+import '../../pages/Home/Home.css';
+import {useStateValue} from '../../StateProvider';
 
 
 function Product({id,title,image,price,rating}){
