@@ -6,7 +6,6 @@ import com.ecommercesystem.backend.repository.ItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +23,6 @@ public class ItemController {
         return ResponseEntity.ok(itemRepository.findAll());
     }
 
-    @PreAuthorize(value = "hasAnyAuthority('Role.ADMIN')")
     @PostMapping("/newItem")
     public ResponseEntity<Item> createItem(@RequestBody Item item) {
         return ResponseEntity.ok(itemRepository.save(item));
