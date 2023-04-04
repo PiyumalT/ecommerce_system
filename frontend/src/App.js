@@ -21,6 +21,7 @@ import AdminNavBar from './components/AdminNavBar/AdminNavBar';
 import AdminDashbord from './pages/AdminDashbord/AdminDashbord';
 import AddProduct from './pages/AddProduct/AddProduct';
 import ProductList from './pages/ProductList/ProductList';
+import UsersList from './pages/UsersList/UsersList';
 
 
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/AdminDashbord" element={<><AdminNavBar/><AdminDashbord/><Footer/></>}/>
             <Route path="/AddProduct" element={<><AdminNavBar/><AddProduct/><Footer/></>}/>
             <Route path="/ProductList" element={<><AdminNavBar/><ProductList/><Footer/></>}/>
+            <Route path="/UsersList" element={<><AdminNavBar/><UsersList/><Footer/></>}/>
           </Routes>
           
           
