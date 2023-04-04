@@ -1,5 +1,6 @@
 package com.ecommercesystem.backend.user;
 
+import com.ecommercesystem.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

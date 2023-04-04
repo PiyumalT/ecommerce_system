@@ -1,5 +1,6 @@
 package com.ecommercesystem.backend.user;
 
+import com.ecommercesystem.backend.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

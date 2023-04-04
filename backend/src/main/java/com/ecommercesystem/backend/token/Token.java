@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.token;
 
-import com.ecommercesystem.backend.user.User;
+import com.ecommercesystem.backend.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

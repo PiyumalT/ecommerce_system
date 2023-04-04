@@ -2,6 +2,7 @@ package com.ecommercesystem.backend.user;
 
 import com.ecommercesystem.backend.config.JwtService;
 import com.ecommercesystem.backend.model.Role;
+import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.token.TokenService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

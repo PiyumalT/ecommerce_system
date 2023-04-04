@@ -2,8 +2,8 @@ package com.ecommercesystem.backend.auth;
 
 import com.ecommercesystem.backend.config.JwtService;
 import com.ecommercesystem.backend.model.Role;
+import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.token.TokenService;
-import com.ecommercesystem.backend.user.User;
 import com.ecommercesystem.backend.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
