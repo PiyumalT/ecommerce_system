@@ -1,4 +1,4 @@
-package com.ecommercesystem.backend.user;
+package com.ecommercesystem.backend.mapper;
 
 import com.ecommercesystem.backend.dto.UserDTO;
 import com.ecommercesystem.backend.model.User;

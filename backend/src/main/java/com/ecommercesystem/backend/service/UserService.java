@@ -2,11 +2,11 @@ package com.ecommercesystem.backend.service;
 
 import com.ecommercesystem.backend.config.JwtService;
 import com.ecommercesystem.backend.dto.UserDTO;
+import com.ecommercesystem.backend.mapper.UserMapper;
 import com.ecommercesystem.backend.model.Role;
 import com.ecommercesystem.backend.model.User;
 import com.ecommercesystem.backend.repository.UserRepository;
 import com.ecommercesystem.backend.token.TokenService;
-import com.ecommercesystem.backend.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
