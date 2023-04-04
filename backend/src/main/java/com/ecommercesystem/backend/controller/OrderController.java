@@ -3,7 +3,7 @@ package com.ecommercesystem.backend.controller;
 import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
 import com.ecommercesystem.backend.model.Order;
 import com.ecommercesystem.backend.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +12,11 @@ import java.util.List;
 
 
 @RestController
+@AllArgsConstructor
 //@CrossOrigin //remove in production - bypass CORS policy error
 @RequestMapping("/api/v1/orders")
 public class OrderController {
 
-    @Autowired
     private OrderRepository orderRepository;
 
     @GetMapping("")
