@@ -1,8 +1,7 @@
 package com.ecommercesystem.backend.controller;
 
-import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
 import com.ecommercesystem.backend.model.Order;
-import com.ecommercesystem.backend.repository.OrderRepository;
+import com.ecommercesystem.backend.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,45 +16,31 @@ import java.util.List;
 @RequestMapping("/api/v1/orders")
 public class OrderController {
 
-    private OrderRepository orderRepository;
+    private final OrderService orderService;
 
     @GetMapping("")
     public ResponseEntity<List<Order>> getAllOrders() {
-        return ResponseEntity.ok(orderRepository.findAll());
+        return ResponseEntity.ok(orderService.getAllOrders());
     }
 
     @PostMapping("/newOrder")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        return ResponseEntity.ok(orderRepository.save(order));
+        return ResponseEntity.ok(orderService.createOrder(order));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable("id") long id) {
-        Order order = orderRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No order found to the given order id: " + id)
-        );
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order editedOrder) {
-        Order orderToUpdate = orderRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No order found to the given order id: " + id)
-        );
-
-        orderToUpdate.setShipped(editedOrder.getShipped());
-
-        orderRepository.save(orderToUpdate);
-
-        return ResponseEntity.ok(orderToUpdate);
+        return ResponseEntity.ok(orderService.updateOrder(id, editedOrder));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
-        Order order = orderRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("No order found to the given order id: " + id)
-        );
-        orderRepository.delete(order);
+    public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
+        orderService.deleteOrder(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
