@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.auth;
 
-import com.ecommercesystem.backend.user.Role;
+import com.ecommercesystem.backend.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;

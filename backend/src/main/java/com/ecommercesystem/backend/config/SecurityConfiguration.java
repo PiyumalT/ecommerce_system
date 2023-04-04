@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.config;
 
-import com.ecommercesystem.backend.user.Role;
+import com.ecommercesystem.backend.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
