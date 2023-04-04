@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.config;
 
-import com.ecommercesystem.backend.user.UserRepository;
+import com.ecommercesystem.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

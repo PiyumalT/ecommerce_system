@@ -2,7 +2,23 @@ package com.ecommercesystem.backend.repository;
 
 import com.ecommercesystem.backend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    // all crud operations handle here - no need to add - already defined
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByEmail(String email);
+
+    boolean existsByEmail(String email);
+
+    Optional<User> findUserByVerificationCode(String verificationCode);
+
+    @Query("""
+            update User u
+            set u.firstname = ?1, u.lastname = ?2
+            where u.id = ?3
+            """)
+    void updateUser(String firstname, String lastname, Integer userId);
 }
