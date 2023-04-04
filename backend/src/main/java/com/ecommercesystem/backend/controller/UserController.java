@@ -15,8 +15,8 @@ public class UserController {
 
     @PreAuthorize("#id.equals(authentication.principal.id)")
     @GetMapping("/{id}")
-    public ResponseEntity<?> viewUserById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(userService.getUserById(id));
+    public ResponseEntity<UserDTO> viewUserById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(userService.getUserDTOById(id));
     }
 
     @GetMapping("/saveTestUser")
