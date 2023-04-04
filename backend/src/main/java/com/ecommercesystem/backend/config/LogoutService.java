@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.config;
 
-import com.ecommercesystem.backend.token.TokenRepository;
+import com.ecommercesystem.backend.repository.TokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;

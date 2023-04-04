@@ -1,4 +1,4 @@
-package com.ecommercesystem.backend.token;
+package com.ecommercesystem.backend.repository;
 
 import com.ecommercesystem.backend.model.Token;
 import org.springframework.data.jpa.repository.JpaRepository;

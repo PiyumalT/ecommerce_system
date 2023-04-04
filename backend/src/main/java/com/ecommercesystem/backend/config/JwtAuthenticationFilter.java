@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.config;
 
-import com.ecommercesystem.backend.token.TokenRepository;
+import com.ecommercesystem.backend.repository.TokenRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
