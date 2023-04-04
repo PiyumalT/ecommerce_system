@@ -1,5 +1,6 @@
 <component name="libraryTable">
-  <library name="Maven: org.modelmapper:modelmapper:3.1.1">
+  <library name="Maven: org.modelmapper:modelmapper:3.1.1" type="java-imported" external-system-id="Maven">
+    <properties groupId="org.modelmapper" artifactId="modelmapper" version="3.1.1" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/3.1.1/modelmapper-3.1.1.jar!/" />
     </CLASSES>
