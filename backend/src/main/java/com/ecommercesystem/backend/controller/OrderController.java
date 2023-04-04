@@ -1,6 +1,6 @@
 package com.ecommercesystem.backend.controller;
 
-import com.ecommercesystem.backend.exception.ResourceNotFoundException;
+import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
 import com.ecommercesystem.backend.model.Order;
 import com.ecommercesystem.backend.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
