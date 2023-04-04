@@ -1,5 +1,6 @@
 package com.ecommercesystem.backend.token;
 
+import com.ecommercesystem.backend.model.Token;
 import com.ecommercesystem.backend.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
