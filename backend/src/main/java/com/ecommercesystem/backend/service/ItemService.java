@@ -26,9 +26,7 @@ public class ItemService {
 
     public Item getItemById(long id) {
         return itemRepository.findById(id).orElseThrow(
-                () -> {
-                    return new ResourceNotFoundException("No item found to the given item id: " + id);
-                }
+                () -> new ResourceNotFoundException("No item found to the given item id: " + id)
         );
     }
 
