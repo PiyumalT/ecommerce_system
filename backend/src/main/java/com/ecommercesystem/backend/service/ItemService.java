@@ -5,7 +5,9 @@ import com.ecommercesystem.backend.model.Item;
 import com.ecommercesystem.backend.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -17,7 +19,8 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Item createNewItem(Item item) {
+    public Item createNewItem(Item item, MultipartFile image) throws IOException {
+        item.setImg(image.getBytes());
         return itemRepository.save(item);
     }
 
