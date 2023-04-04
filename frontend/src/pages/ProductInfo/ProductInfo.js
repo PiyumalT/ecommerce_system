@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navabar';
 import './ProductInfo.css';
 
+
 const ProductDetails = () => {
   // State for quantity of the item
   const [quantity, setQuantity] = useState(1);
@@ -11,40 +12,7 @@ const ProductDetails = () => {
   const [item_opt, setItemopt] = useState("");
 
   // Function to handle increasing the quantity
-  const handleIncrease = () => {
-    if (quantity < item.quantity){
-      setQuantity(quantity + 1);
-    }
-  };
-
-  // Function to handle decreasing the quantity
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  function generateOptions(options) {
-    if (options===''){
-      options='Default';
-    }
-    const optionsList = (options).split(',').map(option => option.trim());
-    if (optionsList.length === 0) {
-      optionsList.push('Default');
-    }
-    return optionsList.map((option, index) => (
-      <option key={index} value={option}>
-        {option}
-      </option>
-    ));
-  }
-
-  function handleQuantityChange(event) {
-    const value = Number(event.target.value);
-    if (!isNaN(value) && value > 0 && value <= item.quantity) {
-      setQuantity(value);
-    }
-  }
+  
 
   function getProductId(url) {
     const urlParts = url.split('/');
@@ -83,12 +51,67 @@ const ProductDetails = () => {
       });
   }, []);
   
+  const handleIncrease = () => {
+    if (quantity < item.quantity){
+      setQuantity(quantity + 1);
+    }
+  };
 
+  // Function to handle decreasing the quantity
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  
+
+
+  function generateOptions(options) {
+    if (options===''){
+      options='Default';
+    }
+    const optionsList = (options).split(',').map(option => option.trim());
+    if (optionsList.length === 0) {
+      optionsList.push('Default');
+    }
+    //setSelectedOption(optionsList[0]);
+    return optionsList.map((option, index) => (
+      <option key={index} value={option}>
+        {option}
+      </option>
+    ));
+  }
+
+  function handleQuantityChange(event) {
+    const value = Number(event.target.value);
+    if (!isNaN(value) && value > 0 && value <= item.quantity) {
+      setQuantity(value);
+    }
+  }
+  
     //give backend options to here
 
-    //const optionsList = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
-    const optionsList = item_opt;
-    var options = generateOptions(optionsList);
+    //const optionsList = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];y
+    var options = generateOptions(item_opt);
+
+    const [selectedOption, setSelectedOption] = useState("Default");
+    const handleOptionChange = (event) => {
+      setSelectedOption(event.target.value);
+    };
+    
+    
+    const handlePlaceOrderClick = () => {
+      const data = {
+        productid: (getProductId(window.location.href)),
+        option: selectedOption,
+        quantity: quantity
+      };
+      const urlEncodedData = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
+      window.location.href = `/placeorder?${urlEncodedData}`;
+    };
+
+
 
 
   return (
@@ -101,10 +124,12 @@ const ProductDetails = () => {
         </div>
         <div className="product-details">
           <h1 className="product-name">{item.name}</h1>
-          <h3>{product_url}</h3>
+
           <p className="product-description">{item.description}</p>
           <p className="product-price">Rs.{item.price}</p>
-          <select className="product-options">
+          <select className="product-options" 
+            value={selectedOption} 
+            onChange={handleOptionChange}>
             {options}
           </select>
           <div className="quantity">
@@ -122,7 +147,7 @@ const ProductDetails = () => {
             </button>
           </div>
           <div className="buttons">
-            <button className="buy-now">Buy Now</button>
+            <button className="buy-now" onClick={handlePlaceOrderClick}>Buy Now</button>
             <button className="add-to-cart">Add to Cart</button>
           </div>
         </div>
