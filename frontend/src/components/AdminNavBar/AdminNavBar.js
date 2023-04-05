@@ -1,18 +1,20 @@
 import React from 'react'
 import './adminNavBar.css';
+import { Link } from 'react-router-dom';
 
 export default function AdminNavBar() {
   return (
     <div>
         <div className='header-logo-div'>
             <img className='header-logo' src="/Picture/logo.png" alt="logo"/>
-            <button className="btn">Log Out</button>
+            <Link className="btn" to="/">Log Out</Link>
         </div>
         <div className="components">
-            <button className="btn1">Add product</button>
-            <button className="btn1">Product list</button>
-            <button className="btn1">Sales list</button>
-            <button className="btn1">Users list</button>
+            <Link className="btn1" to="/AdminDashbord">Dashboard</Link>
+            <Link className="btn1" to="/AddProduct">Add product</Link>
+            <Link className="btn1" to="/ProductList">Product list</Link>
+            <Link className="btn1" to="/SalesList">Sales list</Link>
+            <Link className="btn1" to="/UsersList">Users list</Link>
         </div>
     </div>
   )
