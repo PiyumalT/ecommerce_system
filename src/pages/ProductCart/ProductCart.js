@@ -4,7 +4,7 @@ import {useStateValue} from '../../StateProvider'
 
 function ProductCart({id,title,image,price,rating}){
 
-    const [{basket} , dispatch] = useStateValue();
+    const [dispatch] = useStateValue();
 
     const removeItem = () => {
         dispatch({
@@ -29,11 +29,15 @@ function ProductCart({id,title,image,price,rating}){
                     ))
                 }
             </div>
+            <p>option : safast</p>
             <div className="additem">
-                {/* <button type="button"  onClick={handleDecrement} className="input-text">-</button>
-                <div className="form-control">{quantity}</div>
-                <button type="button" onClick={handleIncrement}className="input-text">+</button> */}
+                    <button>-</button>
+                    <input type="vars" value="0"/>
+                    <button>+</button>
+                      
             </div>
+            
+
             <button onClick={removeItem}>Remove from the Cart</button>
             </div>
         </div>
