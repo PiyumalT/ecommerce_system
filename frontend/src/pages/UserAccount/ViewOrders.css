@@ -1,0 +1,36 @@
+.view-orders-container {
+    margin: 50px auto;
+    max-width: 800px;
+  }
+  
+  .view-orders-title {
+    text-align: center;
+  }
+  
+  .view-orders-message {
+    text-align: center;
+  }
+  
+  .view-orders-item {
+    margin-bottom: 50px;
+    border: solid;
+    padding: 10px;
+  }
+  
+  .view-orders-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .view-orders-table th,
+  .view-orders-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .view-orders-table th {
+    background-color: #f2f2f2;
+  }
+  
