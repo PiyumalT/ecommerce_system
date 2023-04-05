@@ -39,7 +39,7 @@ function Header() {
     
         {/*First Link*/}
 
-        <Link to={!loggedinuser && "/login" } className='header-link'>
+        <Link to={!loggedinuser && "/Register" } className='header-link'>
             <div onClick={logoutUser}className='header-option'>
             <span className='header-option-line1'>Hello, {loggedinuser?.email}</span>
              <span className='header-option-line2'>{loggedinuser ? 'Signout' : 'Sign In'}</span>
