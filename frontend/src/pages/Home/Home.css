@@ -1,15 +1,20 @@
 .home{
-    max-width: 100%;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.offer{
+    height: 350px;
+    animation-delay: 4500ms;
+    animation-duration: 500ms;
+    aspect-ratio: 8251 /3050;
+}
+
 .home-image{
     width: 100%;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
     z-index: -1;
     margin-bottom: -150px;
-    object-fit: cover;
 
 }
 
