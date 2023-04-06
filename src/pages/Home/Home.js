@@ -5,9 +5,14 @@ import Product from '../../components/Product/Product'
 function Home(){
     return(
         <div className="home">
-            <img className="home-image"
-             src="./Picture/home.jpeg"
+          <div className="offer">
+             <img className="home-image"
+             src="./Picture/background1.jpeg"
              alt="logo"/>
+             
+             
+          </div>
+            
 
              
 
