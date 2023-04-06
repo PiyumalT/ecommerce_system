@@ -1,6 +1,7 @@
 package com.ecommercesystem.backend.repository;
 
 import com.ecommercesystem.backend.model.Order;
+import com.ecommercesystem.backend.model.OrderSummary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -28,4 +29,11 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             WHERE o.item_id = ?1
             """)
     List<Order> findAllOrdersMadeToAItemByItemId(long id);
+
+    @Query("""
+            SELECT COUNT(DISTINCT o.user_id), SUM(o.paid_amount), COUNT(*)
+            FROM Order o
+            WHERE o.date = GETDATE()
+            """)
+    OrderSummary findAllOrdersMadeToday();
 }
