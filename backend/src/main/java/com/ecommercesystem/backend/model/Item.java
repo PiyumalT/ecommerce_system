@@ -24,7 +24,6 @@ public class Item {
     private String options;
     private int quantity;
     private String category;
-    @Lob
-    private byte[] img;
+    private String images;
 
 }
