@@ -7,10 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
-    @Query("""
-            SELECT *
-            FROM Cart c
-            WHERE c.user_id = ?1
-            """)
+    @Query("SELECT c \n" +
+            "FROM Cart c\n" +
+            "WHERE c.user_id = ?1")
+
     List<Cart> findAllCartEntriesByUserId(long id);
 }
