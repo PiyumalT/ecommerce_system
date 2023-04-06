@@ -2,6 +2,7 @@ package com.ecommercesystem.backend.service;
 
 import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
 import com.ecommercesystem.backend.model.Order;
+import com.ecommercesystem.backend.model.OrderSummary;
 import com.ecommercesystem.backend.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,5 +47,9 @@ public class OrderService {
 
     public List<Order> getAllOrdersOfAItem(long itemId) {
         return orderRepository.findAllOrdersMadeToAItemByItemId(itemId);
+    }
+
+    public OrderSummary getTodayOrderSummary() {
+        return orderRepository.findAllOrdersMadeToday();
     }
 }
