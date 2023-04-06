@@ -12,27 +12,24 @@ function Register(){
     confirmPassword:''
   });
 
-  const [error, setError] = useState(false);
+  const [passwordAlert, setPasswordAlert] = useState("");
 
   const handleEmailChange = (event) => {
     setState({...state, email:event.target.value});
   };
 
   const handlePasswordChange = (event) => {
-    setState({...state, password:event.target.value});
-  };
-
-  const handleConfirmPasswordChange = (event) => {
-    setState({...state, confirmPassword:event.target.value});
+    const password = event.target.value;
+    setState({...state, password});
+    if (password.length < 8) {
+      setPasswordAlert("Password should be at least 8 characters long");
+    } else {
+      setPasswordAlert("");
+    }
   };
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-
-    if (state.password !== state.confirmPassword) {
-      setError(true);
-      return;
-    }
 
     //send a POST request backend API with the form data
 
@@ -73,10 +70,10 @@ function Register(){
             <br />
             <input type="password" name="password" value={state.password} onChange={handlePasswordChange}/>
             <br />
+            {passwordAlert && <div className="password-alert">{passwordAlert}</div>}
             <label htmlFor="confirm password">Confirm Password:</label>
             <br />
-            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={handleConfirmPasswordChange} />
-            {error && <p style={{color: 'red'}}>Passwords do not match</p>}
+            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={(event)=>setState({...state,confirmPassword:event.target.value})} />
             <br />
             <br />
             <input type="submit" value="Create account" name="submit" />
