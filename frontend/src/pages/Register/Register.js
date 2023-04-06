@@ -5,29 +5,54 @@ import Navbar from '../../components/Navbar/Navabar';
 import './register.css';
 import { Link } from 'react-router-dom';
 
-export default function Register() {
-  const [email, setEmail] = useState('');
+function Register(){
+  const [state, setState] = useState({
+    email: '',
+    password:'',
+    confirmPassword:''
+  });
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
+  const [passwordAlert, setPasswordAlert] = useState("");
 
-  function validateEmail() {
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      alert('Invalid email address');
-      return false;
+  const handleEmailChange = (event) => {
+    setState({...state, email:event.target.value});
+  };
+
+  const handlePasswordChange = (event) => {
+    const password = event.target.value;
+    setState({...state, password});
+    if (password.length < 8) {
+      setPasswordAlert("Password should be at least 8 characters long");
+    } else {
+      setPasswordAlert("");
     }
-    return true;
-  }
+  };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event)=>{
     event.preventDefault();
-    if (validateEmail()) {
-      // handle form submission
-      console.log('Valid email');
-    }
+
+    //send a POST request backend API with the form data
+
+    fetch('/api/Register',{
+      method:'POST',
+      headers:{
+        'Content-Type':'aplication/json'
+      },
+      body:JSON.stringify({
+        email:state.email,
+        password:state.password
+      })
+    })
+
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data);
+    })
+    .catch(error=>{
+      console.error(error);
+    });
   }
+
 
   return (
     <div>
@@ -39,15 +64,16 @@ export default function Register() {
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">E-mail:</label>
             <br />
-            <input type="text" name="email" value={email} onChange={handleEmailChange} />
+            <input type="text" name="email" value={state.email} onChange={handleEmailChange} />
             <br />
             <label htmlFor="password">Password:</label>
             <br />
-            <input type="password" name="password" />
+            <input type="password" name="password" value={state.password} onChange={handlePasswordChange}/>
             <br />
+            {passwordAlert && <div className="password-alert">{passwordAlert}</div>}
             <label htmlFor="confirm password">Confirm Password:</label>
             <br />
-            <input type="password" name="conpassword" />
+            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={(event)=>setState({...state,confirmPassword:event.target.value})} />
             <br />
             <br />
             <input type="submit" value="Create account" name="submit" />
@@ -64,3 +90,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register;
