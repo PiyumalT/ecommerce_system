@@ -25,7 +25,7 @@ public class ItemController {
     }
 
     @PostMapping("/newItem")
-    public ResponseEntity<Item> createNewItem(@RequestBody Item item, @RequestParam("image") MultipartFile image) throws IOException {
+    public ResponseEntity<Item> createNewItem(@RequestBody Item item, @RequestParam("images") MultipartFile image) throws IOException {
         return ResponseEntity.ok(itemService.createNewItem(item, image));
     }
 
