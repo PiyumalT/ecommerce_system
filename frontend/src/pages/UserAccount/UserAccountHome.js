@@ -22,6 +22,8 @@ const UserAccountPage = () => {
   
     const handleEditInfo = () => {
       // handle edit account information button click
+      window.location.href = '/edituserinfo';
+
     };
   
     const handleViewCart = () => {
