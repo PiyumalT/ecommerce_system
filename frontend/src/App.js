@@ -19,9 +19,9 @@ import Contact_Us from './pages/Contact_Us/Contact_Us';
 import Register from './pages/Register/Register';
 import SignIn from './pages/SignIn/SignIn';
 import Emailsent from './pages/Emailsent/Emailsent';
-
-
-
+import UserAccountHome from './pages/UserAccount/UserAccountHome';
+import ViewOrders from './pages/UserAccount/ViewOrders';
+import EditUserInfo from './pages/UserAccount/EditUserinfo';
 
 
 
@@ -44,6 +44,10 @@ function App() {
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
             <Route path="/SignIn" element={<><SignIn/></>}/>
             <Route path="/Emailsent" element={<><Emailsent/></>}/>
+            <Route path="/userAccount" element={<><UserAccountHome/></>}/>
+            <Route path="/ViewOrders" element={<><ViewOrders/></>}/>
+            <Route path="/EditUserInfo" element={<><EditUserInfo/></>}/>
+
           </Routes>
           </div>
           
