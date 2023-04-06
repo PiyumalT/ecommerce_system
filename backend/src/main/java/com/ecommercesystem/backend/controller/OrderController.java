@@ -1,6 +1,7 @@
 package com.ecommercesystem.backend.controller;
 
 import com.ecommercesystem.backend.model.Order;
+import com.ecommercesystem.backend.model.OrderSummary;
 import com.ecommercesystem.backend.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,10 @@ public class OrderController {
     public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
         orderService.deleteOrder(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/today")
+    public ResponseEntity<OrderSummary> getTodayOrderSummary() {
+        return ResponseEntity.ok(orderService.getTodayOrderSummary());
     }
 }
