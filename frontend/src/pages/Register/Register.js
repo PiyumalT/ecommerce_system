@@ -81,7 +81,7 @@ function Register(){
           <br />
           <div>
             <p>
-              Don't have an account? <Link to="./SignIn">Already have an account</Link>
+              Don't have an account? <Link to="../signin">Already have an account</Link>
             </p>
           </div>
         </div>
