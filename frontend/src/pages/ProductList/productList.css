@@ -1,0 +1,35 @@
+th{
+    text-align: center;
+    border: solid black 1px;
+    padding: 10px;
+    background-color: #8ec6f1;     
+}
+
+.middle2 h1{
+    text-align: center;
+    margin-top: 10px;
+    color: #1b0b86;
+}
+
+.middle2{
+    height: 50vw;
+    width: 100%;
+}
+
+.tbody td{
+    text-align: center;
+    border: solid black 1px;
+    padding: 10px;    
+}
+
+.button{
+    background-color: aqua;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.button:hover {
+    background-color: #f9fcf9; /* Green */
+    color: rgb(38, 15, 171);
+  }
