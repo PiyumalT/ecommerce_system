@@ -3,12 +3,15 @@ package com.ecommercesystem.backend.service;
 import com.ecommercesystem.backend.exceptionHandler.ResourceNotFoundException;
 import com.ecommercesystem.backend.model.Item;
 import com.ecommercesystem.backend.repository.ItemRepository;
+import com.ecommercesystem.backend.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +23,10 @@ public class ItemService {
     }
 
     public Item createNewItem(Item item, MultipartFile image) throws IOException {
-        item.setImg(image.getBytes());
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+        String uploadDir = "items/";
+        item.setImages("http://localhost:8080" + uploadDir + fileName);
+        FileUploadUtil.save(uploadDir, fileName, image);
         return itemRepository.save(item);
     }
 
@@ -32,7 +38,7 @@ public class ItemService {
 
     public Item updateItem(long id, Item editedItem) {
 
-        return itemRepository.updateItem(id, editedItem.getName(), editedItem.getDescription(), editedItem.getPrice(), editedItem.getOptions(), editedItem.getQuantity(), editedItem.getCategory(), editedItem.getImg());
+        return itemRepository.updateItem(id, editedItem.getName(), editedItem.getDescription(), editedItem.getPrice(), editedItem.getOptions(), editedItem.getQuantity(), editedItem.getCategory(), editedItem.getImages());
     }
 
     public void deleteItem(long id) {
