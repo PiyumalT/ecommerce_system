@@ -5,29 +5,57 @@ import Navbar from '../../components/Navbar/Navabar';
 import './register.css';
 import { Link } from 'react-router-dom';
 
-export default function Register() {
-  const [email, setEmail] = useState('');
+function Register(){
+  const [state, setState] = useState({
+    email: '',
+    password:'',
+    confirmPassword:''
+  });
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
+  const [error, setError] = useState(false);
 
-  function validateEmail() {
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      alert('Invalid email address');
-      return false;
-    }
-    return true;
-  }
+  const handleEmailChange = (event) => {
+    setState({...state, email:event.target.value});
+  };
 
-  function handleSubmit(event) {
+  const handlePasswordChange = (event) => {
+    setState({...state, password:event.target.value});
+  };
+
+  const handleConfirmPasswordChange = (event) => {
+    setState({...state, confirmPassword:event.target.value});
+  };
+
+  const handleSubmit = (event)=>{
     event.preventDefault();
-    if (validateEmail()) {
-      // handle form submission
-      console.log('Valid email');
+
+    if (state.password !== state.confirmPassword) {
+      setError(true);
+      return;
     }
+
+    //send a POST request backend API with the form data
+
+    fetch('/api/Register',{
+      method:'POST',
+      headers:{
+        'Content-Type':'aplication/json'
+      },
+      body:JSON.stringify({
+        email:state.email,
+        password:state.password
+      })
+    })
+
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data);
+    })
+    .catch(error=>{
+      console.error(error);
+    });
   }
+
 
   return (
     <div>
@@ -39,15 +67,16 @@ export default function Register() {
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">E-mail:</label>
             <br />
-            <input type="text" name="email" value={email} onChange={handleEmailChange} />
+            <input type="text" name="email" value={state.email} onChange={handleEmailChange} />
             <br />
             <label htmlFor="password">Password:</label>
             <br />
-            <input type="password" name="password" />
+            <input type="password" name="password" value={state.password} onChange={handlePasswordChange}/>
             <br />
             <label htmlFor="confirm password">Confirm Password:</label>
             <br />
-            <input type="password" name="conpassword" />
+            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={handleConfirmPasswordChange} />
+            {error && <p style={{color: 'red'}}>Passwords do not match</p>}
             <br />
             <br />
             <input type="submit" value="Create account" name="submit" />
@@ -64,3 +93,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register;
