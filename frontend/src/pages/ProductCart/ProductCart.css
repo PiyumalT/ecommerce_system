@@ -4,10 +4,10 @@
     margin-bottom: 20px;
 }
 
-.productcart-image{
+.productcart-image{ 
     object-fit: contain;
     width: 160px;
-    height: 160px;
+    height: 220px;
     border: 1px solid #ccc;
 }
 
@@ -25,6 +25,7 @@
     border: 1px solid;
     border-radius: 4px;
     margin-top: 10px;
+    width: 190px;
     border-color: #a88734 #9c7e31 #846a29;
 }
 
@@ -32,4 +33,23 @@
     box-shadow: inset 5px 4px 10px rgba(0,0,0,.3),
                 inset -4px -4px 10px white;
     transition: .2s;
+}
+
+.additem{
+    display: flex;
+    height: 30px;
+}
+.additem >button{
+    background: #0187ca;
+    padding: 0px; 
+    font-weight: bold;
+    border-radius: 3px;
+    width: 20px;
+    text-align: center;
+}
+
+.additem > input{
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
 }
