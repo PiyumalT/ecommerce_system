@@ -29,17 +29,17 @@ public class ItemController {
         return ResponseEntity.ok(itemService.createNewItem(item, image));
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Item> getItemById(@PathVariable("id") long id) {
         return ResponseEntity.ok(itemService.getItemById(id));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @RequestBody Item editedItem) {
         return ResponseEntity.ok(itemService.updateItem(id, editedItem));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteItem(@PathVariable("id") long id) {
         itemService.deleteItem(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
