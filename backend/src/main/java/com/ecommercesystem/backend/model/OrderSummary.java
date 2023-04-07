@@ -9,6 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class OrderSummary {
     private int totalUsers;
+    private int totalItems;
     private int totalIncome;
     private int totalOrders;
 }
