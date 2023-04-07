@@ -29,17 +29,17 @@ public class OrderController {
         return ResponseEntity.ok(orderService.createOrder(order));
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable("id") long id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable("id") long id, @RequestBody Order editedOrder) {
         return ResponseEntity.ok(orderService.updateOrder(id, editedOrder));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteOrder(@PathVariable("id") long id) {
         orderService.deleteOrder(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
