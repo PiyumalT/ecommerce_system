@@ -15,18 +15,22 @@ function AddProduct() {
     formData.append('options', e.target.options.value);
     formData.append('product_image', e.target.product_image.files[0]);
 
-    fetch('http://localhost:8080/api/products', {
+    fetch('http://localhost:8080/api/v1/items/newItem', {
       method: 'POST',
       body: formData,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        alert('Product added successfully!');
+      } else {
+        alert('Error adding product. Please try again.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
 
   return (
 
