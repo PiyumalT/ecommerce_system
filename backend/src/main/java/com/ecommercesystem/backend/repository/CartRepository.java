@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
     @Query("""
-            SELECT *
+            SELECT c
             FROM Cart c
             WHERE c.user_id = ?1
             """)

@@ -17,14 +17,14 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     Order updateOrder(long orderId, int address_id, float paid_amount, boolean shipped);
 
     @Query("""
-            SELECT *
+            SELECT o
             FROM Order o
             WHERE o.user_id = ?1
             """)
     List<Order> findAllOrdersMadeByUserUsingUserId(long id);
 
     @Query("""
-            SELECT *
+            SELECT o
             FROM Order o
             WHERE o.item_id = ?1
             """)
