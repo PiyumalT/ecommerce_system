@@ -8,8 +8,8 @@ import './EditUserInfo.css';
 
 function UserDetails() {
     const [userInfo, setUserInfo] = useState({
-      firstName: 'Unable to load',
-      lastName: 'Unable to load',
+      firstname: 'Unable to load',
+      lastname: 'Unable to load',
       email: 'Unable to load',
       password: '',
     });
@@ -17,13 +17,12 @@ function UserDetails() {
     useEffect(() => {
       const fetchUser = async () => {
         try {
-          const response = await fetch('http://localhost:3003/user');
+          const response = await fetch('http://localhost:8080/api/v1/user/2');
           const data = await response.json();
           setUserInfo({
-            firstName: data.firstName,
-            lastName: data.lastName,
+            firstname: data.firstname,
+            lastname: data.lastname,
             email: data.email,
-            password: data.password,
           });
         } catch (error) {
           console.error(error);
@@ -62,8 +61,8 @@ function UserDetails() {
     setEditing(false);
     setPasswordEditing(false);
     try{
-      const response = await fetch('http://localhost:3003/saveuser', {
-        method: 'POST', //change to
+      const response = await fetch('http://localhost:8080/api/v1/user/2', {
+        method: 'PUT', //change to
         headers: {
           'Content-Type': 'application/json'
         },
@@ -155,8 +154,8 @@ function UserDetails() {
             <label>First Name:</label>
             <input
                 type="text"
-                value={userInfo.firstName}
-                onChange={(e) => handleChange('firstName', e.target.value)}
+                value={userInfo.firstname}
+                onChange={(e) => handleChange('firstname', e.target.value)}
                 disabled={!editing}
             />
             </div>
@@ -164,8 +163,8 @@ function UserDetails() {
             <label>Last Name:</label>
             <input
                 type="text"
-                value={userInfo.lastName}
-                onChange={(e) => handleChange('lastName', e.target.value)}
+                value={userInfo.lastname}
+                onChange={(e) => handleChange('lastname', e.target.value)}
                 disabled={!editing}
             />
             
