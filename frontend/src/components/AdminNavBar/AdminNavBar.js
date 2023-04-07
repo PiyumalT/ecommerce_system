@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 export default function AdminNavBar() {
   return (
     <div>
-        <div className='header-logo-div'>
-            <img className='header-logo' src="/Picture/logo.png" alt="logo"/>
-            <Link className="btn" to="/">Log Out</Link>
+        <div className='header-logo-div1'>
+            <img className='header-logo1' src="/Picture/logo.png" alt="logo"/>
+            <Link className="btn_1" to="/">Log Out</Link>
         </div>
         <div className="components">
             <Link className="btn1" to="/AdminDashbord">Dashboard</Link>
