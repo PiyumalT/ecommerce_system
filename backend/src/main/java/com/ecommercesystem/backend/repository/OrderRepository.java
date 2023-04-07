@@ -24,7 +24,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "WHERE o.item_id = ?1")
     List<Order> findAllOrdersMadeToAItemByItemId(long id);
 
-    @Query("SELECT COUNT(DISTINCT o.user_id), SUM(o.paid_amount), COUNT(o) " +
+    @Query("SELECT COUNT(DISTINCT o.user_id), COUNT(DISTINCT o.item_id),SUM(o.paid_amount), COUNT(o) " +
             "FROM Order o " +
             "WHERE o.date =  current_date ")
     OrderSummary findAllOrdersMadeToday();
