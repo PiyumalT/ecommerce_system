@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private int user_id;
-    private int address_id;
+    private long order_id;
+    private int cus_id;
+    private String address_id;
     private float price;
     private LocalDateTime date;
     private float paid_amount;
