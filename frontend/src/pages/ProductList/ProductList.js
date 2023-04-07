@@ -42,7 +42,7 @@ export default function ProductList() {
    }
   
   return (
-    <div className='middle2'>
+    <div className='middle_2'>
         <h1>Product List</h1>
         <table >
          <thead>
