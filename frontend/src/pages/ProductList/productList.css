@@ -12,7 +12,7 @@ th{
 }
 
 .middle_2{
-    height: 50vw;
+    height: auto;
     width: 100%;
 }
 
@@ -33,3 +33,10 @@ th{
     background-color: #f9fcf9; /* Green */
     color: rgb(38, 15, 171);
   }
+
+.link_1{
+    text-decoration: none;
+    color: black;
+}
+
+.tbody tr:nth-child(even) {background: #cde5ee}

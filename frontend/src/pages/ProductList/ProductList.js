@@ -1,32 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './productList.css'
+import { Link } from 'react-router-dom';
 
 
 export default function ProductList() {
   const [data, setData] = useState([]); //data is an array of objects
   useEffect(
     ()=>{},[])
+  
 
   //retrieve data from Spring Boot backend 
-  fetch('http://localhost:8080/items')
+  fetch('http://localhost:8080/api/v1/items')
   .then(response => response.json())
   .then(data => {
     // do something with the data 
     setData(data); 
   });
 
- //calculate the number of sold items
-    let totalSoldItems = 0;
-
-    //retrieve data from order_details table
-    fetch('http://localhost:8080/order_details')
-    .then(response => response.json())
-    .then(orderDetails => {
-
-    orderDetails.forEach(order => {
-      totalSoldItems += order.qty;
-         });
-    });
+ 
  
  //edit data
  
@@ -35,7 +26,7 @@ export default function ProductList() {
  function handleDelete(id) {
     const confirmed = window.confirm('Are you sure you want to delete this item?');
     if (confirmed) {
-    fetch(`http://localhost:8080/items/${id}`, { method: 'DELETE' })
+    fetch(`http://localhost:8080/api/v1/items/${id}`, { method: 'DELETE' })
       .then(response => {
         // do something after the item has been deleted
       }); }
@@ -51,21 +42,21 @@ export default function ProductList() {
             <th>Name</th>
             <th>Details</th>
             <th>Quantity</th>
-            <th>Sold</th>
+            <th>Price</th>
             <th>Edit</th>
             <th>Delete</th>
             </tr>
          </thead>
          <tbody className='tbody'>
          {data.map(item => (
-            <tr key={item.id}>
-            <td>{item.id}</td>
+            <tr key={item.item_id}>
+            <td>{item.item_id}</td>
             <td>{item.name}</td>
-            <td>{item.details}</td>
-            <td>{item.qty}</td>
-            <td>{totalSoldItems}</td>
-            <td><button className="button">Edit</button></td>
-            <td><button className="button" onClick={() => handleDelete(item.id)}>Delete</button></td>
+            <td>{item.description}</td>
+            <td>{item.quantity}</td>
+            <td>{item.price}</td>
+            <td><button className="button"><Link to="/AddProduct" className='link_1'>Edit</Link></button></td>
+            <td><button className="button" onClick={() => handleDelete(item.item_id)}>Delete</button></td>
             </tr> 
              ))} 
          </tbody>
@@ -73,4 +64,5 @@ export default function ProductList() {
     </div>
     
   )
+
 }
