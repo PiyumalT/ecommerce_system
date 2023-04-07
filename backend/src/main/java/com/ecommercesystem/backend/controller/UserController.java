@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
@@ -26,7 +28,12 @@ public class UserController {
 
     @PreAuthorize("#id.equals(authentication.principal.id)")
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUserById(@PathVariable("id") Integer id, @RequestBody UserDTO editedUser) {
+    public ResponseEntity<String> updateUserById(@PathVariable("id") Integer id, @RequestBody UserDTO editedUser) {
         return ResponseEntity.ok(userService.updateUserById(id, editedUser));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<UserDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 }
