@@ -63,6 +63,7 @@ const ProductDetails = () => {
       setQuantity(quantity - 1);
     }
   };
+  item.images=("../../picture/" + item.item_id + ".jpg");
 
   
 
@@ -120,7 +121,7 @@ const ProductDetails = () => {
       <Navbar />
       <div className="product-container">
         <div className="product-image">
-            <img src="/Picture/5.jpg" alt="Item" />
+        <img src={item.images} alt="Item" />
         </div>
         <div className="product-details">
           <h1 className="product-name">{item.name}</h1>

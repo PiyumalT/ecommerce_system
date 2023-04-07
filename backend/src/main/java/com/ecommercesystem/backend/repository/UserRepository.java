@@ -15,10 +15,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findUserByVerificationCode(String verificationCode);
 
-    @Query("""
-            update User u
-            set u.firstname = ?1, u.lastname = ?2
-            where u.id = ?3
-            """)
+    @Query("UPDATE User u " +
+            "SET u.firstname = :firstname, u.lastname = :lastname " +
+            "WHERE u.id = :userId")
     void updateUser(String firstname, String lastname, Integer userId);
 }
