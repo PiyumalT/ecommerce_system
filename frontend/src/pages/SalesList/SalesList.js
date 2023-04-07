@@ -3,42 +3,30 @@ import './salesList.css';
 
 export default function SalesList() {
   const [data, setData] = useState([]);
-  const [orderStatus, setOrderStatus] = useState(null);
+  const [orderState, setOrderState] = useState([]);
 
   useEffect(() => {
     //retrieve data from Spring Boot backend 
-    fetch('http://localhost:8080/order_details')
+    fetch('http://localhost:8080/api/v1/orders')
       .then(response => response.json())
       .then(data => {
         setData(data);
+        setOrderState(data.map(order => ({
+          id: order.order_id,
+          shipped: order.shipped
+        })));
       });
   }, []);
 
-  useEffect(() => {
-    //retrieve data from order table
-    fetch('http://localhost:8080/order')
-      .then(response => response.json())
-      .then(order => {
-        order.forEach(order => {
-          if (order.order_id === data.order_id) {
-            //get the status of the order
-            setOrderStatus(order.shipped);
-          }
-        });
-      });
-  }, [data]);
-
-  function linkTopage() {
-    window.location.href = "http://localhost:3000/order_info";
-  }
-
-  function handleMarkShippedClick() {
-    const confirmed = window.confirm('Are you sure you want to mark shipped?');
-    if (confirmed) {
-      if (orderStatus !== null) {
-        document.getElementsByClassName("text").innerHTML = "shipped";
-      }
-    } else {}
+  function handleMarkShippedClick(orderId) {
+    setOrderState(prevState =>
+      prevState.map(order => {
+        if (order.id === orderId) {
+          return { ...order, shipped: true };
+        }
+        return order;
+      })
+    );
   }
 
   return (
@@ -47,9 +35,9 @@ export default function SalesList() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Option</th>
+            <th>OrderID</th>
+            <th>ItemID</th>
+            <th>Price</th>
             <th>Qty</th>
             <th>Date and Time</th>
             <th>Mark ship</th>
@@ -57,37 +45,28 @@ export default function SalesList() {
           </tr>
         </thead>
         <tbody className='tbody'>
-          {data.map(order_details => {
-            let itemName = '';
-            let orderDate = '';
-
-            //retrieve data from item table
-            fetch('http://localhost:8080/item')
-              .then(response => response.json())
-              .then(item => {
-                item.forEach(item => {
-                  if (item.item_id === order_details.item_id) {
-                    //get the name of the item
-                    itemName = item.item_name;
-                  }
-                });
-              });
-
+          {data.map(orders => {
+            const order = orderState.find(order => order.id === orders.order_id);
             return (
-              <tr key={order_details.id}>
-                <td>{order_details.id}</td>
-                <td>{itemName}</td>
-                <td>{order_details.options}</td>
-                <td>{order_details.qty}</td>
-                <td>{orderDate}</td>
+              <tr key={orders.order_id}>
+                <td>{orders.order_id}</td>
+                <td>{orders.item_id}</td>
+                <td>{orders.price}</td>
+                <td>{orders.quantity}</td>
+                <td>{orders.date}</td>
                 <td>
-                  <button className="button" onClick={() => handleMarkShippedClick()}><p className='text'>mark_shipped</p></button>
+                  <button
+                    className="button"
+                    onClick={() => handleMarkShippedClick(orders.order_id)}
+                  >
+                    <p className="text">{order.shipped ? 'Shipped' : 'Mark Shipped'}</p>
+                  </button>
                 </td>
                 <td>
-                  <button className="button" onClick={linkTopage()}>More details</button>
+                  <button className="button">More details</button>
                 </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
