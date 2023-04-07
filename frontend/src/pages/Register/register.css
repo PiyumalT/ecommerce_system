@@ -21,3 +21,10 @@
         
 }
 
+.password-alert{
+    color:rgb(133, 231, 133);
+}
+
+.confirm-password-alert{
+    color:Red;
+}
