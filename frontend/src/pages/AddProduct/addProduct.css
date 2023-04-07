@@ -1,6 +1,7 @@
-.middle1{
+.middle_1{
   height: 42vw;
-  
+  display: block;
+  background-color: rgba(240, 241, 242, 0.906);
 }
 
 .first, .second1, .third {
@@ -51,7 +52,7 @@
     padding: 10px;
   }
 
-  .middle1 h1 {
+  .middle_1 h1 {
     text-align: center;
     margin-top: 10px;
     color: #1b0b86;

@@ -30,8 +30,8 @@ function AddProduct() {
 
   return (
 
-    <div className='middle1'>
-      <h1>Add product</h1>
+    <div className='middle_1'>
+      <h1 className='title1'>Add Product</h1>
       <form onSubmit={sendProduct}>
         <table border="0">
           <tbody>
