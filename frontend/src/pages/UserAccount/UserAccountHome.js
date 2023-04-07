@@ -5,8 +5,11 @@ import Navbar from '../../components/Navbar/Navabar';
 
 import './UserAccountHome.css';
 
+
+
 const UserAccountPage = () => {
     const [userInfo, setUserInfo] = useState({});
+    sessionStorage.setItem('user_id', '4');
   
     useEffect(() => {
       const user = localStorage.getItem('user');
@@ -35,6 +38,7 @@ const UserAccountPage = () => {
     const handleLogout = () => {
       if (window.confirm('Are you sure you want to logout?')) {
         localStorage.removeItem('user');
+        sessionStorage.removeItem('user_id');
         window.location.href = '/';
       }
     };

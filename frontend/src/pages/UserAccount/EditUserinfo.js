@@ -13,11 +13,11 @@ function UserDetails() {
       email: 'Unable to load',
       password: '',
     });
-  
+    const saved_user_id = sessionStorage.getItem('user_id');
     useEffect(() => {
       const fetchUser = async () => {
         try {
-          const response = await fetch('http://localhost:8080/api/v1/user/2');
+          const response = await fetch(`http://localhost:8080/api/v1/user/${saved_user_id}`);
           const data = await response.json();
           setUserInfo({
             firstname: data.firstname,
@@ -61,7 +61,7 @@ function UserDetails() {
     setEditing(false);
     setPasswordEditing(false);
     try{
-      const response = await fetch('http://localhost:8080/api/v1/user/2', {
+      const response = await fetch(`http://localhost:8080/api/v1/user/${saved_user_id}`, {
         method: 'PUT', //change to
         headers: {
           'Content-Type': 'application/json'
