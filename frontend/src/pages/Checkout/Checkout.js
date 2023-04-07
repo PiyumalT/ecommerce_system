@@ -21,11 +21,71 @@ function Checkout() {
     phone: ''
   });
 
-  const handleAddressChange = (event) => {
-    setAddress({
-      ...address,
-      [event.target.name]: event.target.value
+  const placeorder = (event) => {
+
+
+      // Get references to the input fields
+    const nameInput = document.querySelector('input[name="name"]');
+    const addressInput = document.querySelector('input[name="address"]');
+    const cityInput = document.querySelector('input[name="city"]');
+    const districtInput = document.querySelector('input[name="district"]');
+    const phoneInput = document.querySelector('input[name="phone"]');
+
+    if (!nameInput.value.trim() ||
+    !addressInput.value.trim() ||
+    !cityInput.value.trim() ||
+    !districtInput.value.trim() ||
+    !phoneInput.value.trim()) {
+  // Show an alert if any of the inputs are empty
+      alert('Please fill out all the address fields.');
+      return;
+}
+
+    // Create the JSON object
+    const user_address = `${nameInput.value}, ${addressInput.value}, ${cityInput.value}, ${districtInput.value}, ${phoneInput.value}`;
+    const order = {
+      order_id: 0, // Replace with the actual order ID
+      cus_id: 1, // Replace with the actual customer ID
+      address_id: user_address, // Replace with the actual address ID
+      price: product.price * quantity, // Replace with the actual price
+      date: new Date().toISOString(), // Use the current date and time
+      paid_amount: 0.0,
+      shipped: false,
+      quantity: 0,
+      item_id: 0,
+    };
+
+    // Send the JSON object to the server
+    fetch('http://localhost:8080/api/v1/orders/newOrder', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+    .then(response => {
+      // Check if the response was successful
+      if (!response.ok) {
+        throw new Error('Failed to place order');
+      }
+    
+      // Parse the response body as JSON
+      return response.json();
+    })
+    .then(data => {
+      // Catch the order ID from the server response
+      const orderId = data.order_id;
+    
+      // Redirect to the order success page
+      window.location.href = `/OrderStatus?id=${orderId}`;
+    })
+    .catch(error => {
+      // Handle any errors here
+      alert("error")
     });
+    
+    
+
   };
   
   useEffect(() => {
@@ -112,7 +172,6 @@ function Checkout() {
         </div>
         <div className="checkout-right">
           <h2>Delivery Address</h2>
-          <form>
             <table><thead>
               <tr>
                 <td className="label">Name:</td>
@@ -136,14 +195,11 @@ function Checkout() {
               </tr>
               <tr>
                 <td colSpan="2">
-                  <button type="submit">Place Order</button>
+                  <button type="submit" onClick={placeorder}>Place Order</button>
                 </td>
               </tr></thead>
             </table>
 
-
-
-          </form>
 
         </div>
       </div>

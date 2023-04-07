@@ -19,9 +19,9 @@ import javax.persistence.Table;
 public class Cart {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Integer order_id;
     private long item_id;
-    private int user_id;
+    private int cus_id;
     private int quantity;
     private boolean shipped;
 }
