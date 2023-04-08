@@ -27,7 +27,7 @@ public class CartService {
         return cartRepository.findAll();
     }
 
-    public List<Cart> viewCartByUser(long userId) {
+    public List<Cart> viewCartByUser(Integer userId) {
         return cartRepository.findAllCartEntriesByUserId(userId);
     }
 }

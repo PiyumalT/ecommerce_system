@@ -10,6 +10,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Query("SELECT c \n" +
             "FROM Cart c\n" +
             "WHERE c.cus_id = ?1")
-
-    List<Cart> findAllCartEntriesByUserId(long id);
+    List<Cart> findAllCartEntriesByUserId(Integer id);
 }

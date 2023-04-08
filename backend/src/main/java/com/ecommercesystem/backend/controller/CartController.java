@@ -32,7 +32,7 @@ public class CartController {
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<List<Cart>> viewCartOfUserByUserId(@PathVariable("id") long userId) {
+    public ResponseEntity<List<Cart>> viewCartOfUserByUserId(@PathVariable("id") Integer userId) {
         return ResponseEntity.ok(cartService.viewCartByUser(userId));
     }
 }
