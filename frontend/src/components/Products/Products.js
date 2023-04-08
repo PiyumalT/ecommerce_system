@@ -35,6 +35,7 @@ export default function Products() {
               price={item.price}
               rating={4}
               image={`./Picture/${item.item_id}.jpg`}
+              url= {`./ProductInfo/${item.item_id}`} 
             />
           ))}
         </div>

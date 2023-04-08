@@ -44,3 +44,9 @@
     inset -4px -4px 10px white;
     transition: .2s; 
 }
+
+.li{
+    text-decoration: none;
+    color: rgb(51, 11, 180);
+    font-size: 25px;
+}
