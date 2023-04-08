@@ -41,7 +41,7 @@ public class OrderService {
         orderRepository.delete(order);
     }
 
-    public List<Order> getAllOrdersOfAUser(long userId) {
+    public List<Order> getAllOrdersOfAUser(Integer userId) {
         return orderRepository.findAllOrdersMadeByUserUsingUserId(userId);
     }
 
