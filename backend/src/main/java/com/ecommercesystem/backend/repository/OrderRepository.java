@@ -17,7 +17,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o \n" +
             "FROM Order o\n" +
             "WHERE o.cus_id = ?1")
-    List<Order> findAllOrdersMadeByUserUsingUserId(long id);
+    List<Order> findAllOrdersMadeByUserUsingUserId(Integer id);
 
     @Query("SELECT o \n" +
             "FROM Order o\n" +
