@@ -7,7 +7,7 @@ function Home(){
         <div className="home">
           <div className="offer">
              <img className="home-image"
-             src="./Picture/background1.jpeg"
+             src="./Picture/background.jpeg"
              alt="logo"/>   
           </div>
             
