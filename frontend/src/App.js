@@ -51,7 +51,7 @@ function App() {
             <Route path="/" element={<><Header/><Navbar/><Home/><Footer/></>}/>
             <Route path="/About" element={<><About/></>}/>
             <Route path="/FAQ" element={<><FAQ/></>}/>
-            <Route path="/ProductInfo/*" element={<><ProductInfo/></>}/>
+            <Route path="/ProductInfo/*" element={<><Header/><Navbar/><ProductInfo/><Footer/></>}/>
             <Route path="/Contact_Us" element={<><Contact_Us/></>}/>
             <Route path="/SignIn" element={<><SignIn/></>}/>
             <Route path="/register" element={<><Register/></>}/>
