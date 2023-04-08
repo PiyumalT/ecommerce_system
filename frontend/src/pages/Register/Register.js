@@ -5,7 +5,11 @@ import Navbar from '../../components/Navbar/Navabar';
 import './register.css';
 import { Link } from 'react-router-dom';
 
+
+
 function Register(){
+
+  
   const [state, setState] = useState({
     email: '',
     password:'',
@@ -13,6 +17,7 @@ function Register(){
   });
 
   const [passwordAlert, setPasswordAlert] = useState("");
+  const [confirmPasswordAlert, setConfirmPasswordAlert] = useState("");
 
   const handleEmailChange = (event) => {
     setState({...state, email:event.target.value});
@@ -28,31 +33,52 @@ function Register(){
     }
   };
 
+  const handleConfirmPasswordChange = (event) => {
+    const confirmPassword = event.target.value;
+    setState({...state, confirmPassword});
+    if (confirmPassword !== state.password) {
+      setConfirmPasswordAlert("Confirm password does not match the password");
+    } else {
+      setConfirmPasswordAlert("");
+    }
+  };
+
   const handleSubmit = (event)=>{
-    event.preventDefault();
+    const submitButton = document.querySelector('input[name="submit"]');
+    submitButton.value = 'Sending Email...';
+    submitButton.disabled = true;
 
     //send a POST request backend API with the form data
 
-    fetch('/api/Register',{
-      method:'POST',
-      headers:{
-        'Content-Type':'aplication/json'
-      },
-      body:JSON.stringify({
-        email:state.email,
-        password:state.password
-      })
+    fetch('http://localhost:8080/api/v1/auth/register',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+      email:state.email,
+      password:state.password,
+      firstname:"Null",
+      lastname:"Null"
     })
+  })
 
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data);
-    })
+  .then(response => {
+    if(response.ok){
+      window.location.href = 'emailsent';
+    } else {
+      console.error('Error response from server: ' + response.status);
+      submitButton.value = 'Create account';
+      submitButton.disabled = false;
+    }
+  })
     .catch(error=>{
       console.error(error);
     });
-  }
+    }
 
+  
+  
 
   return (
     <div>
@@ -61,7 +87,7 @@ function Register(){
       <div className="middle">
         <div className="box">
           <h1>Create New account</h1>
-          <form onSubmit={handleSubmit}>
+          
             <label htmlFor="email">E-mail:</label>
             <br />
             <input type="text" name="email" value={state.email} onChange={handleEmailChange} />
@@ -73,11 +99,15 @@ function Register(){
             {passwordAlert && <div className="password-alert">{passwordAlert}</div>}
             <label htmlFor="confirm password">Confirm Password:</label>
             <br />
-            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={(event)=>setState({...state,confirmPassword:event.target.value})} />
+            <input type="password" name="confirmpassword" value={state.confirmPassword} onChange={handleConfirmPasswordChange} />
+            {confirmPasswordAlert && <div className="confirm-password-alert">{confirmPasswordAlert}</div>}
             <br />
             <br />
-            <input type="submit" value="Create account" name="submit" />
-          </form>
+            
+              <input type="submit" value="Create account" name="submit" onClick={handleSubmit} />
+            
+            
+
           <br />
           <div>
             <p>
