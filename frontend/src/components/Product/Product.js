@@ -2,9 +2,10 @@ import React from "react";
 import './Product.css';
 import '../../pages/Home/Home.css';
 import {useStateValue} from '../../StateProvider';
+import { Link } from "react-router-dom";
 
 
-function Product({id,title,image,price,rating}){
+function Product({id,title,image,price,rating,url}){
     
     const [{basket}, dispatch] = useStateValue()
     const addToBasket = () => {
@@ -15,7 +16,8 @@ function Product({id,title,image,price,rating}){
             title: title,
             image: image,
             price: price,
-            rating: rating
+            rating: rating,
+            url: url
         }
     })
 } 
@@ -23,7 +25,8 @@ function Product({id,title,image,price,rating}){
     return(
         <div className="product">
             <div className="product-info">
-                <p>{title}</p>
+                
+            <Link to={url} className="li" ><p>{title}</p></Link>
                 <p className="product-price">
                     <strong>{price}</strong>
                     <small>/=</small>
