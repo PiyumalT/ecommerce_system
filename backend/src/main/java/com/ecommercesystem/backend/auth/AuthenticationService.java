@@ -35,7 +35,7 @@ public class AuthenticationService {
 
     private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
         String toSendAddress = user.getEmail();
-        String fromSendingAddress = env.getProperty("SENDER_MAIL");
+        String fromSendingAddress = "ecommercesiteg4@gmail.com";
         String senderName = "Group 04";
         String subject = "Please verify your registration.";
         String content = "Dear [[name]], <br>"
