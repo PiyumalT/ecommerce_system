@@ -18,7 +18,11 @@ function Header() {
 
   return (
     <div className="header">
-      <img className='header-logo' src="./Picture/logo.png" alt="icon"/>
+      
+      <Link to="/">
+           <img className='header-logo' src="./Picture/logo.png" alt="icon"/>
+       </Link>
+      
       
         <div className='header-search'>
         
