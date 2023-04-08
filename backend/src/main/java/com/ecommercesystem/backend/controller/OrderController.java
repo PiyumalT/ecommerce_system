@@ -49,4 +49,9 @@ public class OrderController {
     public ResponseEntity<OrderSummary> getTodayOrderSummary() {
         return ResponseEntity.ok(orderService.getTodayOrderSummary());
     }
+
+    @GetMapping("/userId={userId}")
+    public ResponseEntity<List<Order>> getAllOrdersByAUser(@PathVariable("userId") long id) {
+        return ResponseEntity.ok(orderService.getAllOrdersOfAUser(id));
+    }
 }
