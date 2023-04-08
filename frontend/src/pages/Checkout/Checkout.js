@@ -43,16 +43,17 @@ function Checkout() {
 
     // Create the JSON object
     const user_address = `${nameInput.value}, ${addressInput.value}, ${cityInput.value}, ${districtInput.value}, ${phoneInput.value}`;
+    const saved_user_id = sessionStorage.getItem('user_id');
     const order = {
       order_id: 0, // Replace with the actual order ID
-      cus_id: 1, // Replace with the actual customer ID
+      cus_id: saved_user_id, // Replace with the actual customer ID
       address_id: user_address, // Replace with the actual address ID
       price: product.price * quantity, // Replace with the actual price
       date: new Date().toISOString(), // Use the current date and time
       paid_amount: 0.0,
       shipped: false,
-      quantity: 0,
-      item_id: 0,
+      quantity: quantity ,
+      item_id: productid,
     };
 
     // Send the JSON object to the server
