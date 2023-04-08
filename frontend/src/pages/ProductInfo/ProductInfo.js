@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../../components/Footer/Footer';
+/*import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import Navbar from '../../components/Navbar/Navabar';
+import Navbar from '../../components/Navbar/Navabar';*/
 import './ProductInfo.css';
 
 
@@ -117,8 +117,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <Header />
-      <Navbar />
+      
       <div className="product-container">
         <div className="product-image">
         <img src={item.images} alt="Item" />
@@ -153,7 +152,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </>
   );
 };
