@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-//@CrossOrigin //remove in production - bypass CORS policy error
+@CrossOrigin //remove in production - bypass CORS policy error
 @RequestMapping("/api/v1/items")
 public class ItemController {
 

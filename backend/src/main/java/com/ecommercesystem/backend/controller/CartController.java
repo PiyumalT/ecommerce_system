@@ -11,6 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
+@CrossOrigin //remove in production - bypass CORS policy error
+
 public class CartController {
     private final CartService cartService;
 
@@ -29,7 +31,7 @@ public class CartController {
         return ResponseEntity.ok(cartService.viewFromCartById(id));
     }
 
-    @GetMapping("/user={id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<List<Cart>> viewCartOfUserByUserId(@PathVariable("id") long userId) {
         return ResponseEntity.ok(cartService.viewCartByUser(userId));
     }
