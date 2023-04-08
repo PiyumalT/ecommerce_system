@@ -7,6 +7,7 @@ import AddCart from './components/AddCart/AddCart';
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navabar'
 import SearchResults from './components/SearchResults/SearchResults';
+import Cart from './pages/Cart/Cartpage';
 
 
 
@@ -71,7 +72,8 @@ function App() {
             <Route path="/ProductList" element={<><AdminNavBar/><ProductList/><Footer/></>}/>
             <Route path="/UsersList" element={<><AdminNavBar/><UsersList/><Footer/></>}/>
             <Route path="/SalesList" element={<><AdminNavBar/><SalesList/><Footer/></>}/>
-             <Route path="/SearchResults" element={<><SearchResults/></>}/>                        
+             <Route path="/SearchResults" element={<><SearchResults/></>}/> 
+             <Route path="/AddCart/*" element={<><Cart/></>}/>
 
           </Routes>
           </div>
