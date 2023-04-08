@@ -10,6 +10,11 @@ function ViewOrdersPage({ userInfo }) {
   const saved_user_id = sessionStorage.getItem('user_id');
   const [items, setItems] = useState([]);
 
+
+
+
+
+
   useEffect(() => {
     fetch('http://localhost:8080/api/v1/items')
       .then(response => response.json())
@@ -38,7 +43,7 @@ function ViewOrdersPage({ userInfo }) {
         items: [
           {
             id: order.item_id,
-            name: 'Van park light (Id -' + order.item_id + ')',//items.find(item => item.item_id === 19)?.name || 'Unknown',
+            name: 'Item Id -' + order.item_id ,//items.find(item => item.item_id === 19)?.name || 'Unknown',
             option: 'Default',
             quantity: order.quantity,
             price: order.price
@@ -51,18 +56,6 @@ function ViewOrdersPage({ userInfo }) {
     fetchOrders();
   }, [userInfo]);
 
-  const getItemName = async (itemId) => {
-    if (itemId>0){
-      const response = await fetch(`http://localhost:8080/api/v1/items/${itemId}`);
-      const data = await response.json();
-      return data.name;
-    }
-    else{
-      return "undefined";
-    }
-    
-
-  };
   
 
   return (
@@ -92,7 +85,7 @@ function ViewOrdersPage({ userInfo }) {
                     <tbody>
                       {order.items.map((item) => (
                         <tr key={item.id}>
-                          <td>{item.name}</td>
+                          <td><a href={`http://localhost:3000/ProductInfo/${item.id}`}>{item.name}</a></td>
                           <td>{item.option}</td>
                           <td>{item.quantity}</td>
                           <td>{item.price}</td>

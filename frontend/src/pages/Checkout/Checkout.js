@@ -4,12 +4,20 @@ import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navabar';
 import './Checkout.css';
 
+
+
+
+
+
 function Checkout() {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const productid = urlSearchParams.get('productid');
   const option = urlSearchParams.get('option');
   const quantity = urlSearchParams.get('quantity');
   const cartid=urlSearchParams.get('cartid');
+
+  const Delivery_fee=299;
+  const Coupon=100;
   
   const [product, setProduct] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
@@ -30,6 +38,7 @@ function Checkout() {
     const cityInput = document.querySelector('input[name="city"]');
     const districtInput = document.querySelector('input[name="district"]');
     const phoneInput = document.querySelector('input[name="phone"]');
+    
 
     if (!nameInput.value.trim() ||
     !addressInput.value.trim() ||
@@ -48,7 +57,7 @@ function Checkout() {
       order_id: 0, // Replace with the actual order ID
       cus_id: saved_user_id, // Replace with the actual customer ID
       address_id: user_address, // Replace with the actual address ID
-      price: product.price * quantity, // Replace with the actual price
+      price: product.price * quantity + Delivery_fee - Coupon, // Replace with the actual price
       date: new Date().toISOString(), // Use the current date and time
       paid_amount: 0.0,
       shipped: false,
@@ -97,10 +106,9 @@ function Checkout() {
           const data = await response.json();
           setProduct(data);
         } else if (cartid) {
-          const response = await fetch(`http://localhost:8080/api/v1/cart/`);
-          const data = await response.json();
-          setCartProducts(data);
-          console.log(cartid);
+            const savedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            setCartProducts(savedCartItems);
+            //console.log(savedCartItems);
         }
       } catch (error) {
         console.error(error);
@@ -109,6 +117,8 @@ function Checkout() {
 
     fetchData();
   }, [productid, cartid]);
+
+  const totalPrice = 0;
 
   return (
     <>
@@ -140,31 +150,36 @@ function Checkout() {
                 <td>{quantity}</td>
                 <td>{product.price * quantity}</td>
               </tr>
+              
             )}
             {cartid && (
               <>
                 {cartProducts.map((cartProduct) => (
-                  <tr key={cartProduct.id}>
-                    <td>{cartProduct.item_id}</td>
-                    <td>{cartProduct.options}</td>
-                    <td>{cartProduct.user_id}</td>
-                    <td>{cartProduct.qty}</td>
-                    <td>{cartProduct.user_id * cartProduct.qty}</td>
+                  <tr key={cartProduct.productid}>
+                    <td>{cartProduct.item_name}</td>
+                    <td>{cartProduct.option}</td>
+                    <td>{cartProduct.item_price}</td>
+                    <td>{cartProduct.quantity}</td>
+                    <td>{cartProduct.item_price * cartProduct.quantity}</td>
                   </tr>
                 ))}
               </>
             )}
             <tr>
               <td colSpan="4">Delivery Charges</td>
-              <td>$5.00</td>
+              <td>{Delivery_fee}</td>
             </tr>
             <tr>
               <td colSpan="4">Coupon Discount</td>
-              <td>-$3.00</td>
+              <td>-{Coupon}</td>
             </tr>
             <tr>
               <td colSpan="4">Total</td>
-              <td>$37.00</td>
+              <td>
+                {product
+                    ? `${product.price * quantity + Delivery_fee - Coupon}`
+                    : `${5892+199}`}
+                    </td>
             </tr>
             </tbody>
           </table>

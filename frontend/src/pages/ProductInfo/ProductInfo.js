@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-/*import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
-import Navbar from '../../components/Navbar/Navabar';*/
+import Navbar from '../../components/Navbar/Navabar';
 import './ProductInfo.css';
 
 
@@ -111,13 +111,31 @@ const ProductDetails = () => {
       const urlEncodedData = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
       window.location.href = `/placeorder?${urlEncodedData}`;
     };
+    //localStorage.removeItem('cartItems');
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const handleaddtocart = () => {
+      const data1 = {
+        productid: (getProductId(window.location.href)),
+        option: selectedOption,
+        quantity: quantity,
+        item_name:item.name,
+        item_price:item.price
+      };
+      cartItems.push(data1);
+      
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      console.log(cartItems);
+      alert("done")
+    };
+
 
 
 
 
   return (
     <>
-      
+      <Header />
+      <Navbar />
       <div className="product-container">
         <div className="product-image">
         <img src={item.images} alt="Item" />
@@ -148,11 +166,11 @@ const ProductDetails = () => {
           </div>
           <div className="buttons">
             <button className="buy-now" onClick={handlePlaceOrderClick}>Buy Now</button>
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={handleaddtocart}>Add to Cart</button>
           </div>
         </div>
       </div>
-      
+      <Footer />
     </>
   );
 };
