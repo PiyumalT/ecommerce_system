@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 
 @Service
 @RequiredArgsConstructor
@@ -106,5 +107,11 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    public Object login(AuthenticationRequest request) {
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("user not found."));
+        return new HashMap<String, Integer>().put("id", user.getId());
     }
 }
