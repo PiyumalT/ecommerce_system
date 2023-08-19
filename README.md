@@ -10,14 +10,14 @@ E-commerce Web application developed using React.js for the frontend and Spring 
 
 ## Contributors
 Have questions? Ask from our contributors!
-- Nayantha Yasiru
    <a href="https://github.com/Nayantha">
    <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100">
+   Nayantha Yasiru
    </a>
    
-- Nimesha Kavindi
    <a href="https://github.com/NimeshaKavindi">
    <img src="https://avatars.githubusercontent.com/u/91362972?v=4" alt="Nimesha's Profile" width="100">
+   Nimesha Kavindi
    </a>
    
 - Pathum
