@@ -8,31 +8,31 @@
 ## About the Project
 E-commerce Web application developed using React.js for the frontend and Spring Boot for the backend. This project aims to create a fully functional e-commerce platform with features such as user authentication, product browsing, cart management, and order processing.
 
-## Contributors
+## Main Contributors
 Have questions? Ask from our contributors! <br>
    <a href="https://github.com/Nayantha">
-   <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100">
+   <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100" style="border-radius: 50%;"  >
    Nayantha Yasiru
    </a>
    
    <a href="https://github.com/NimeshaKavindi">
-   <img src="https://avatars.githubusercontent.com/u/91362972?v=4" alt="Nimesha's Profile" width="100">
+   <img src="https://avatars.githubusercontent.com/u/91362972?v=4" alt="Nimesha's Profile" width="100" style="border-radius: 50%;">
    Nimesha Kavindi
    </a>
    
-- Pathum
-   <a href="https://github.com/pathum">
-   <img src="https://avatars.githubusercontent.com/u/23456789?v=4" alt="Pathum's Profile" width="100">
+   <a href="https://github.com/PathumSanjana">
+   <img src="https://avatars.githubusercontent.com/u/94284049?v=4" alt="Pathum's Profile" width="100" style="border-radius: 50%;">
+   Pathum Sanjana 
    </a>
    
-- Tharindu
-   <a href="https://github.com/tharindu">
-   <img src="https://avatars.githubusercontent.com/u/34567890?v=4" alt="Tharindu's Profile" width="100">
+   <a href="https://github.com/PiyumalT">
+   <img src="https://avatars.githubusercontent.com/u/94281006?v=4" alt="Tharindu's Profile" width="100" style="border-radius: 50%;">
+   Tharindu Piyumal 
    </a>
    
-- Tharsan
-   <a href="https://github.com/tharsan">
-   <img src="https://avatars.githubusercontent.com/u/45678901?v=4" alt="Tharsan's Profile" width="100">
+   <a href="https://github.com/STharshan">
+   <img src="https://avatars.githubusercontent.com/u/94169764?v=4" alt="Tharsan's Profile" width="100" style="border-radius: 50%;">
+   Tharsan
    </a>
 
 ## Features
