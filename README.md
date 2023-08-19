@@ -9,7 +9,7 @@
 E-commerce Web application developed using React.js for the frontend and Spring Boot for the backend. This project aims to create a fully functional e-commerce platform with features such as user authentication, product browsing, cart management, and order processing.
 
 ## Contributors
-Have questions? Ask from our contributors!
+Have questions? Ask from our contributors! <br>
    <a href="https://github.com/Nayantha">
    <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100">
    Nayantha Yasiru
