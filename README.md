@@ -11,27 +11,27 @@ E-commerce Web application developed using React.js for the frontend and Spring 
 ## Main Contributors
 Have questions? Ask from our contributors! <br>
    <a href="https://github.com/Nayantha">
-   <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100" style="border-radius: 50%;"  >
+   <img src="https://avatars.githubusercontent.com/u/88623037?v=4" alt="Nayantha's Profile" width="100" >
    Nayantha Yasiru
    </a>
    
    <a href="https://github.com/NimeshaKavindi">
-   <img src="https://avatars.githubusercontent.com/u/91362972?v=4" alt="Nimesha's Profile" width="100" style="border-radius: 50%;">
+   <img src="https://avatars.githubusercontent.com/u/91362972?v=4" alt="Nimesha's Profile" width="100" >
    Nimesha Kavindi
    </a>
    
    <a href="https://github.com/PathumSanjana">
-   <img src="https://avatars.githubusercontent.com/u/94284049?v=4" alt="Pathum's Profile" width="100" style="border-radius: 50%;">
+   <img src="https://avatars.githubusercontent.com/u/94284049?v=4" alt="Pathum's Profile" width="100" >
    Pathum Sanjana 
    </a>
    
    <a href="https://github.com/PiyumalT">
-   <img src="https://avatars.githubusercontent.com/u/94281006?v=4" alt="Tharindu's Profile" width="100" style="border-radius: 50%;">
+   <img src="https://avatars.githubusercontent.com/u/94281006?v=4" alt="Tharindu's Profile" width="100" >
    Tharindu Piyumal 
    </a>
    
    <a href="https://github.com/STharshan">
-   <img src="https://avatars.githubusercontent.com/u/94169764?v=4" alt="Tharsan's Profile" width="100" style="border-radius: 50%;">
+   <img src="https://avatars.githubusercontent.com/u/94169764?v=4" alt="Tharsan's Profile" width="100" >
    Tharsan
    </a>
 
