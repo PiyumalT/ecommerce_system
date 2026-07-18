@@ -7,7 +7,6 @@ import com.ecommercesystem.backend.repository.UserRepository;
 import com.ecommercesystem.backend.service.TokenService;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.utility.RandomString;
-import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,12 +29,11 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final JavaMailSender mailSender;
-    private final Environment env;
 
 
     private void sendVerificationEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException {
         String toSendAddress = user.getEmail();
-        String fromSendingAddress = env.getProperty("SENDER_MAIL");
+        String fromSendingAddress = "ecommercesiteg4@gmail.com";
         String senderName = "Group 04";
         String subject = "Please verify your registration.";
         String content = "Dear [[name]], <br>"
@@ -106,5 +104,17 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    public Object login(AuthenticationRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("user not found."));
+        return user.getId();
     }
 }

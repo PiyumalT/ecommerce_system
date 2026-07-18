@@ -6,20 +6,11 @@ import './Navbar.css';
 function Navbar(){
     return(
         <div className="navbar">
-            <div className="navbar-outer">
-    
-                <div className="navbar-inner">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-expanded="false">
-                     <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                     <Link>Home</Link>
-                     <Link>Customer Service</Link>
-                     <Link>Conact Us</Link>
-                     <Link>Product</Link>
-                </div>
-                
-            </div>
+            
+                     <Link to="/" className="link_2">Home</Link>
+                     <Link  to="/FAQ" className="link_2">Customer Service</Link>
+                     <Link to="/Contact_Us"className="link_2" >Contact Us</Link>
+                     <Link to="/About" className="link_2">About</Link>
             
         </div>
     );

@@ -1,0 +1,20 @@
+.middle2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: rgb(186, 224, 243);
+    width:100%; 
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.box2{
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    background-color:rgb(80, 228, 74); 
+    color: #3b0d61;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}

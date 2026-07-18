@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<?> handleIllegalArgumentException() {
-        return ResponseEntity.badRequest().body("Passwords do not match.");
+    public ResponseEntity<?> handleIllegalArgumentException(String msg) {
+        return ResponseEntity.badRequest().body(msg);
     }
 }

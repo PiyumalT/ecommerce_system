@@ -45,9 +45,13 @@ public class UserService {
     }
 
 
-    public final UserDTO getUserById(Integer id) {
-        User user = userRepository.findById(id)
+    public final User getUserById(Integer id) {
+        return userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found."));
+    }
+
+    public final UserDTO getUserDTOById(Integer id) {
+        User user = getUserById(id);
         return modelMapper.map(user, UserDTO.class);
     }
 
@@ -58,18 +62,18 @@ public class UserService {
     }
 
     public final String deactivateUserById(Integer id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("No User name found to id: " + id + ". "));
+        User user = getUserById(id);
         return deactivateUser(user);
     }
 
     public final String removeUserFromDB(User user) {
         userRepository.delete(user);
         tokenService.revokeUserTokens(user);
-        return "deactivated " + user.getFirstname() + " " + user.getLastname();
+        return "removed " + user.getFirstname() + " " + user.getLastname();
     }
 
     public final String removeUserFromDBById(Integer id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("No User name found to id: " + id + ". "));
+        User user = getUserById(id);
         return removeUserFromDB(user);
     }
 
