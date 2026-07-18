@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    
+}
+ 
+.second{
+    display: flex;
+    width: 100%;
+   background-color: rgb(186, 224, 243);
+   height: 40vw;
+
+}
+
+.value{
+    height: 330px;
+    width: 25%;
+    background-color: rgb(203, 208, 205);
+    padding: 1vw;
+    margin: 3vw;
+    margin-top: 8vw;
+    border: 5px solid black;
+    text-align: center;
+    border-radius: 20%; 
+    
+}
+
+.total{
+    height: 65%;
+    
+    background-color: rgba(13, 13, 13, 0.93);
+    padding:4vw;
+    margin: 2vw 2vw 2vw 2vw;
+    text-align: center;
+    color: rgb(249, 251, 253);
+    border-radius: 30%;
+    
+}
+
+
+
+
+   

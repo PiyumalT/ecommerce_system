@@ -1,0 +1,52 @@
+.cart-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .cart-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .cart-table tfoot tr td {
+    font-weight: bold;
+  }
+  
+  .cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cart-page h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .cart-page p {
+    font-size: 24px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .clear-btn,
+.place-order-btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.clear-btn:hover,
+.place-order-btn:hover {
+  background-color: #555;
+}

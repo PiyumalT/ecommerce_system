@@ -13,6 +13,8 @@ import java.io.UnsupportedEncodingException;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@CrossOrigin //remove in production - bypass CORS policy error
+
 public class AuthenticationController {
     private final AuthenticationService service;
 
@@ -52,5 +54,10 @@ public class AuthenticationController {
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest request) {
         return ResponseEntity.ok(service.authenticate(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody AuthenticationRequest request) {
+        return ResponseEntity.ok(service.login(request));
     }
 }
