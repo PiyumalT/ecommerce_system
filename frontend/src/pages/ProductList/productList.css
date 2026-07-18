@@ -1,0 +1,42 @@
+th{
+    text-align: center;
+    border: solid black 1px;
+    padding: 10px;
+    background-color: #8ec6f1;     
+}
+
+.middle_2 h1{
+    text-align: center;
+    margin-top: 10px;
+    color: #1b0b86;
+}
+
+.middle_2{
+    height: auto;
+    width: 100%;
+}
+
+.tbody td{
+    text-align: center;
+    border: solid black 1px;
+    padding: 10px;    
+}
+
+.button{
+    background-color: aqua;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+.button:hover {
+    background-color: #f9fcf9; /* Green */
+    color: rgb(38, 15, 171);
+  }
+
+.link_1{
+    text-decoration: none;
+    color: black;
+}
+
+.tbody tr:nth-child(even) {background: #cde5ee}

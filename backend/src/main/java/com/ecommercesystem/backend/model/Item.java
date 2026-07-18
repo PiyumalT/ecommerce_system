@@ -17,13 +17,13 @@ import javax.persistence.*;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long item_id;
     private String name;
     private String description;
     private float price;
     private String options;
     private int quantity;
     private String category;
-    private String img;
+    private String images;
 
 }
