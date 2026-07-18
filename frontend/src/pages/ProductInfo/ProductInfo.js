@@ -63,6 +63,7 @@ const ProductDetails = () => {
       setQuantity(quantity - 1);
     }
   };
+  item.images=("../../picture/" + item.item_id + ".jpg");
 
   
 
@@ -110,6 +111,23 @@ const ProductDetails = () => {
       const urlEncodedData = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
       window.location.href = `/placeorder?${urlEncodedData}`;
     };
+    //localStorage.removeItem('cartItems');
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const handleaddtocart = () => {
+      const data1 = {
+        productid: (getProductId(window.location.href)),
+        option: selectedOption,
+        quantity: quantity,
+        item_name:item.name,
+        item_price:item.price
+      };
+      cartItems.push(data1);
+      
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      console.log(cartItems);
+      alert("done")
+    };
+
 
 
 
@@ -120,7 +138,7 @@ const ProductDetails = () => {
       <Navbar />
       <div className="product-container">
         <div className="product-image">
-            <img src="/Picture/5.jpg" alt="Item" />
+        <img src={item.images} alt="Item" />
         </div>
         <div className="product-details">
           <h1 className="product-name">{item.name}</h1>
@@ -148,7 +166,7 @@ const ProductDetails = () => {
           </div>
           <div className="buttons">
             <button className="buy-now" onClick={handlePlaceOrderClick}>Buy Now</button>
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={handleaddtocart}>Add to Cart</button>
           </div>
         </div>
       </div>
